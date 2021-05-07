@@ -1,57 +1,41 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Col, Row, Container } from 'reactstrap';
 
+// Import Images
 const background = `${process.env.PUBLIC_URL}/img/landing/header_bg.png`;
 const img = `${process.env.PUBLIC_URL}/img/landing/macbook.png`;
-const html = `${process.env.PUBLIC_URL}/img/landing/technologies/html.svg`;
-const angular = `${process.env.PUBLIC_URL}/img/landing/technologies/angular.svg`;
+const homeImg = `${process.env.PUBLIC_URL}/img/landing/home-img.png`;
 
 const Header = () => (
   <div className="landing__header" style={{ backgroundImage: `url(${background})` }}>
     <Container>
-      <Row>
-        <Col md={12}>
-          <h2 className="landing__header-title">The best documented and cleanest coded
-            <b> React Bootstrap 4</b> Admin Template <br />+ <b>Seed Project</b> Inside!<br />
-            + (NEW) <b>Authorization</b> with Firebase, Auth0, Google and Facebook accounts
-          </h2>
-          <p className="landing__header-subhead">We guarantee you will always get the actual version of the template
-            with a bunch of{' '}
-            <NavLink className="landing__header-subhead-update" to="/documentation/changelog" target="_blank">
-              freshest updates
-            </NavLink>.
-          </p>
-          <NavLink className="landing__btn landing__btn--header" to="/documentation/introduction" target="_blank">
-            Check out the docs
-          </NavLink>
-          <NavLink className="landing__btn landing__btn--header" to="/online_marketing_dashboard" target="_blank">
-            Live demo
-          </NavLink>
-          <h2 className="landing__header-title">Also available on</h2>
-          <div className="landing__header-language-wrap">
-            <a
-              className="landing__header-language"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://clck.ru/RE2qj"
-            >
-              <img src={html} alt="logo html5" />
-              <p>HTML</p>
-            </a>
-            <a
-              className="landing__header-language"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://clck.ru/RE2sy"
-            >
-              <img src={angular} alt="logo angular" />
-              <p>Angular</p>
-            </a>
-          </div>
-          <img className="landing__header-img" src={img} alt="macbook" />
-        </Col>
-      </Row>
+      <section className="hero-section" id="home">
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={6}>
+              <div className="hero-wrapper mb-4">
+                <p className="font-16 text-uppercase">Discover Invoza Today</p>
+                <h1 className="hero-title mb-4">Make your Site Amazing & Unique with <span className="text-primary">Invoza</span></h1>
+
+                <p>To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine occidental</p>
+
+                <div className="mt-4">
+                  <Link to="/" className="btn btn-primary mt-2 mr-2">Get Started</Link>
+                  <Link to="/" className="btn btn-success mt-2 mr-2 ml-1">Learn more</Link>
+                </div>
+              </div>
+
+            </Col>
+
+            <Col lg={6} sm={8}>
+              <div className="home-img mt-5 mt-lg-0">
+                <img src={homeImg} alt="" className="img-fluid mx-auto d-block" />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </Container>
   </div>
 );

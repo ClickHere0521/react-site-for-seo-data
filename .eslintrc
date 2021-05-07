@@ -30,7 +30,7 @@
         "some": [ "id" ]
       }
     }],
-    "max-len": ["error", {"code": 120, "ignoreRegExpLiterals": true, "tabWidth": 2}],
+    "max-len": ["error", {"code": 200, "ignoreRegExpLiterals": true, "tabWidth": 2}],
     "no-console": [0],
     "no-alert": [0],
     "no-trailing-spaces": "off",
@@ -53,6 +53,9 @@
         ],
         "extensions": [".js", ".css", ".sass", ".json", ".jsx"]
       }
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
     }
   }
 }

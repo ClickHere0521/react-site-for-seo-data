@@ -8,7 +8,7 @@ import { ThemeProps } from '@/shared/prop-types/ReducerProps';
 import Header from './components/Header';
 import Technologies from './components/Technologies';
 import Demos from './components/Demos';
-import Features from './components/Features';
+import Features from './components/Features/Features';
 import Purchase from './components/Purchase';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
@@ -16,6 +16,7 @@ import FeatureRequest from './components/FeatureRequest';
 import Feedback from './components/Feedback';
 import Code from './components/Code';
 import Applications from './components/Applications';
+import Services from './components/Services/Services';
 
 const logo = `${process.env.PUBLIC_URL}/img/landing/logo.svg`;
 
@@ -40,9 +41,9 @@ const Landing = ({ dispatch, theme }) => {
                 </div>
                 <nav className="landing__menu-nav">
                   <div className="landing__menu-nav--button">
-                    <Link activeClass="active" to="about" spy smooth duration={500}>
+                    <Link activeClass="active" to="services" spy smooth duration={500}>
                       <button type="button">
-                        About EasyDEV
+                        Services
                       </button>
                     </Link>
                     <Link activeClass="active" to="features" spy smooth duration={1000}>
@@ -50,14 +51,14 @@ const Landing = ({ dispatch, theme }) => {
                         Features
                       </button>
                     </Link>
-                    <Link activeClass="active" to="demos" spy smooth duration={1500}>
+                    <Link activeClass="active" to="clients" spy smooth duration={1500}>
                       <button type="button">
-                        Demos
+                        Clients
                       </button>
                     </Link>
-                    <Link activeClass="active" to="feature_request" spy smooth duration={2000}>
+                    <Link activeClass="active" to="plans" spy smooth duration={2000}>
                       <button type="button">
-                        Feature request
+                        Plans
                         <span className="landing__menu-nav-new" />
                       </button>
                     </Link>
@@ -88,16 +89,17 @@ const Landing = ({ dispatch, theme }) => {
         </Container>
       </div>
       <Header />
-      <Element name="about" />
-      <Technologies />
+      <Element name="services" />
+      <Services />
+      {/* <Technologies />
       <Feedback />
-      <Code />
+      <Code /> */}
       <Element name="features" />
       <Features />
-      <Element name="demos" />
+      <Element name="clients" />
       <Demos theme={theme} changeToDark={changeToDark} changeToLight={changeToLight} />
       <Applications />
-      <Element name="feature_request" />
+      <Element name="plans" />
       <FeatureRequest />
       <Testimonials />
       <Purchase />
