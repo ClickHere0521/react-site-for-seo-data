@@ -15,10 +15,10 @@ const Header = () => (
           <Row className="justify-content-center">
             <Col lg={6}>
               <div className="hero-wrapper mb-4">
-                <p className="font-16 text-uppercase">Discover Invoza Today</p>
-                <h1 className="hero-title mb-4">Make your Site Amazing & Unique with <span className="text-primary">Invoza</span></h1>
+                <p className="font-16 text-uppercase">Get the SEO data today</p>
+                <h1 className="hero-title mb-4">Make your Business Amazing & Awesome with <span className="text-primary">JOEL</span></h1>
 
-                <p>To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine occidental</p>
+                <p>To a Business person, it will seem like simplified SEO tool, as a kind friend of his work</p>
 
                 <div className="mt-4">
                   <Link to="/" className="btn btn-primary mt-2 mr-2">Get Started</Link>

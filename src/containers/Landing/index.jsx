@@ -6,17 +6,17 @@ import { Link, Element } from 'react-scroll';
 import { changeThemeToDark, changeThemeToLight } from '@/redux/actions/themeActions';
 import { ThemeProps } from '@/shared/prop-types/ReducerProps';
 import Header from './components/Header';
-import Technologies from './components/Technologies';
-import Demos from './components/Demos';
-import Features from './components/Features/Features';
-import Purchase from './components/Purchase';
+// import Technologies from './components/Technologies';
+// import Demos from './components/Demos';
+// import Features from './components/Features/Features';
+// import Purchase from './components/Purchase';
 import Footer from './components/Footer';
-import Testimonials from './components/Testimonials';
-import FeatureRequest from './components/FeatureRequest';
-import Feedback from './components/Feedback';
-import Code from './components/Code';
-import Applications from './components/Applications';
-import Services from './components/Services/Services';
+// import Testimonials from './components/Testimonials';
+// import FeatureRequest from './components/FeatureRequest';
+// import Feedback from './components/Feedback';
+// import Code from './components/Code';
+// import Applications from './components/Applications';
+// import Services from './components/Services/Services';
 
 const logo = `${process.env.PUBLIC_URL}/img/landing/logo.svg`;
 
@@ -40,7 +40,7 @@ const Landing = ({ dispatch, theme }) => {
                   <img src={logo} alt="" />
                 </div>
                 <nav className="landing__menu-nav">
-                  <div className="landing__menu-nav--button">
+                  {/* <div className="landing__menu-nav--button">
                     <Link activeClass="active" to="services" spy smooth duration={500}>
                       <button type="button">
                         Services
@@ -62,7 +62,7 @@ const Landing = ({ dispatch, theme }) => {
                         <span className="landing__menu-nav-new" />
                       </button>
                     </Link>
-                  </div>
+                  </div> */}
                   <div>
                     <a
                       className="landing__btn landing__btn--nav landing__btn--gradient"
@@ -70,7 +70,7 @@ const Landing = ({ dispatch, theme }) => {
                       rel="noopener noreferrer"
                       href="https://1.envato.market/Buy-now-React"
                     >
-                      Buy now
+                      Get Started
                     </a>
                     <a
                       className="landing__btn landing__btn--nav landing__btn--hire-us"
@@ -79,7 +79,7 @@ const Landing = ({ dispatch, theme }) => {
                       // eslint-disable-next-line max-len
                       href="https://aspirity.com/easydev?utm_source=easydev_landing&utm_medium=referral&utm_campaign=templates#hireus"
                     >
-                      Hire Us
+                      Learn More
                     </a>
                   </div>
                 </nav>
@@ -89,12 +89,12 @@ const Landing = ({ dispatch, theme }) => {
         </Container>
       </div>
       <Header />
-      <Element name="services" />
-      <Services />
+      {/* <Element name="services" />
+      <Services /> */}
       {/* <Technologies />
       <Feedback />
       <Code /> */}
-      <Element name="features" />
+      {/* <Element name="features" />
       <Features />
       <Element name="clients" />
       <Demos theme={theme} changeToDark={changeToDark} changeToLight={changeToLight} />
@@ -102,7 +102,7 @@ const Landing = ({ dispatch, theme }) => {
       <Element name="plans" />
       <FeatureRequest />
       <Testimonials />
-      <Purchase />
+      <Purchase /> */}
       <Footer />
     </div>
   );
