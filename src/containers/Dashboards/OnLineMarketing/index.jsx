@@ -24,7 +24,7 @@ const OnLineMarketingDashboard = ({ rtl }) => {
     <Container className="dashboard">
       <Row>
         <Col md={12}>
-          <h3 className="page-title">{t('online_marketing_dashboard.page_title')}</h3>
+          <h3 className="page-title">{t('api_dashboard.page_title')}</h3>
         </Col>
       </Row>
       <Row>

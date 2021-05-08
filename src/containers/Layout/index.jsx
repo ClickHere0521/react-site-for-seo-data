@@ -35,7 +35,7 @@ const Layout = ({
   useEffect(() => {
     if (!isNotificationShown) {
       WelcomeNotification(theme, rtl, setIsNotificationShown, isNotificationShown);
-    }
+    }    
   }, [theme, rtl, isNotificationShown]);
 
   const sidebarVisibility = () => {

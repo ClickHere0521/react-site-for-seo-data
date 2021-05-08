@@ -21,8 +21,8 @@ const Header = () => (
                 <p>To a Business person, it will seem like simplified SEO tool, as a kind friend of his work</p>
 
                 <div className="mt-4">
-                  <Link to="/" className="btn btn-primary mt-2 mr-2">Get Started</Link>
-                  <Link to="/" className="btn btn-success mt-2 mr-2 ml-1">Learn more</Link>
+                  <Link to="/log_in" className="btn btn-primary mt-2 mr-2">Get Started</Link>
+                  <Link to="/log_in" className="btn btn-success mt-2 mr-2 ml-1">Learn more</Link>
                 </div>
               </div>
 

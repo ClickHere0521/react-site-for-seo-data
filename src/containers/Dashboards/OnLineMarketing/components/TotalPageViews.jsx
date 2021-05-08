@@ -34,7 +34,7 @@ const TotalPageViews = () => {
       <Card>
         <CardBody className="dashboard__card-widget">
           <div className="card__title">
-            <h5 className="bold-text">{t('online_marketing_dashboard.total_page_views')}</h5>
+            <h5 className="bold-text">{t('api_dashboard.total_page_views')}</h5>
           </div>
           <div className="dashboard__total">
             <TrendingUpIcon className="dashboard__trend-icon" />

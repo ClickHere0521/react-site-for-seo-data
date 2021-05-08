@@ -46,7 +46,7 @@ export default const app = () => (
    <Auth0Provider
      domain={auth0Config.domain}
      clientId={auth0Config.clientId}
-     redirectUri={\`${window.location.origin}/easydev/online_marketing_dashboard\`}
+     redirectUri={\`${window.location.origin}/easydev/api_dashboard\`}
      onRedirectCallback={onRedirectCallbackAuth0}
    >
    <div>

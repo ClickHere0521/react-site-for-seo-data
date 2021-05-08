@@ -20,7 +20,7 @@ const ABTestingAnalytics = ({ dir, themeName }) => {
   const { t } = useTranslation('common');
 
   return (
-    <Panel md={12} lg={12} xl={12} title={t('online_marketing_dashboard.ab_testing')}>
+    <Panel md={12} lg={12} xl={12} title={t('api_dashboard.ab_testing')}>
       <div dir="ltr">
         <ResponsiveContainer height={250} className="dashboard__area">
           <AreaChart data={data} margin={{ top: 20, left: -15, bottom: 20 }}>

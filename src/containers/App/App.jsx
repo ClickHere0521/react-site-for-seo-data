@@ -61,11 +61,11 @@ const App = () => {
       <Auth0Provider
         domain={auth0Config.domain}
         clientId={auth0Config.clientId}
-        redirectUri={`${window.location.origin}/easydev/online_marketing_dashboard`}
-        returnTo={`${window.location.origin}/easydev/online_marketing_dashboard`}
+        redirectUri={`${window.location.origin}/easydev/register_photo`}
+        returnTo={`${window.location.origin}/easydev/api_dashboard`}
         onRedirectCallback={onRedirectCallbackAuth0}
       >
-        <BrowserRouter basename="/easydev">
+        <BrowserRouter basename="">
           <I18nextProvider i18n={i18n}>
             <LoadScript
               googleMapsApiKey="" /* Paste your Google Maps Api Key here */

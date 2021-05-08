@@ -14,7 +14,7 @@ const SidebarContent = ({ onClick, changeToLight, changeToDark }) => {
         <SidebarLink
           title="Online Marketing Dashboard"
           icon="home"
-          route="/online_marketing_dashboard"
+          route="/api_dashboard"
           onClick={hideSidebar}
         />
         <SidebarLink

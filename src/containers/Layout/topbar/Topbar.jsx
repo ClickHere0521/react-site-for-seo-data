@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { UserProps } from '@/shared/prop-types/ReducerProps';
 import TopbarSidebarButton from './TopbarSidebarButton';
 import TopbarProfile from './TopbarProfile';
-import TopbarMail from './TopbarMail';
-import TopbarNotification from './TopbarNotification';
-import TopbarSearch from './TopbarSearch';
+import TopbarAddFunds from './TopbarAddFunds';
+import TopbarLeftCredits from './TopbarLeftCredits';
+// import TopbarMail from './TopbarMail';
+// import TopbarNotification from './TopbarNotification';
+// import TopbarSearch from './TopbarSearch';
 import TopbarLanguage from './TopbarLanguage';
 
 const Topbar = ({
@@ -18,15 +20,17 @@ const Topbar = ({
         changeMobileSidebarVisibility={changeMobileSidebarVisibility}
         changeSidebarVisibility={changeSidebarVisibility}
       />
-      <Link className="topbar__logo" to="/online_marketing_dashboard" />
+      <Link className="topbar__logo" to="/api_dashboard" />
     </div>
     <div className="topbar__right">
-      <div className="topbar__right-search">
+      {/* <div className="topbar__right-search">
         <TopbarSearch />
-      </div>
+      </div> */}
       <div className="topbar__right-over">
-        <TopbarNotification />
-        <TopbarMail new />
+        {/* <TopbarNotification />
+        <TopbarMail /> */}
+        <TopbarAddFunds new />
+        <TopbarLeftCredits />
         <TopbarProfile user={user} />
         <TopbarLanguage />
       </div>

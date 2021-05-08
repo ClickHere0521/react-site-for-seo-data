@@ -14,12 +14,12 @@ const SidebarContent = ({
     <div className="sidebar__content">
       <ul className="sidebar__block">
         <SidebarLink
-          title="Online Marketing Dashboard"
+          title="API Dashboard"
           icon="home"
-          route="/online_marketing_dashboard"
+          route="/api_dashboard"
           onClick={hideSidebar}
         />
-        <SidebarLink
+        {/* <SidebarLink
           title="E-commerce Dashboard"
           icon="store"
           route="/e_commerce_dashboard"
@@ -48,8 +48,8 @@ const SidebarContent = ({
           icon="heart-pulse"
           route="/fitness_dashboard"
           onClick={hideSidebar}
-        />
-        <SidebarCategory title="Layout" icon="layers" sidebarCollapse={sidebarCollapse}>
+        /> */}
+        {/* <SidebarCategory title="Layout" icon="layers" sidebarCollapse={sidebarCollapse}>
           <button className="sidebar__link" type="button" onClick={changeToLight}>
             <p className="sidebar__link-title">Light Theme</p>
           </button>
@@ -62,11 +62,14 @@ const SidebarContent = ({
           route="/log_in"
           icon="user"
           onClick={hideSidebar}
-        />
+        /> */}
       </ul>
       <ul className="sidebar__block">
-        <SidebarCategory title="UI Elements" icon="diamond" sidebarCollapse={sidebarCollapse}>
-          <SidebarLink title="Alerts" route="/ui/alerts" onClick={hideSidebar} />
+        <SidebarCategory title="API Usage" icon="diamond" sidebarCollapse={sidebarCollapse}>
+          <SidebarLink title="Rank Tracker" route="/ui/alerts" onClick={hideSidebar} />
+          <SidebarLink title="SERP" route="/ui/buttons" onClick={hideSidebar} />
+          <SidebarLink title="Keywords Data" route="/ui/carousel" onClick={hideSidebar} />
+          {/* <SidebarLink title="Alerts" route="/ui/alerts" onClick={hideSidebar} />
           <SidebarLink title="Buttons" route="/ui/buttons" onClick={hideSidebar} />
           <SidebarLink title="Carousel" route="/ui/carousel" onClick={hideSidebar} />
           <SidebarLink title="Collapse" route="/ui/collapse" onClick={hideSidebar} />
@@ -79,9 +82,9 @@ const SidebarContent = ({
           <SidebarLink title="Tabs" route="/ui/tabs" onClick={hideSidebar} />
           <SidebarLink title="Timeline" route="/ui/timeline" onClick={hideSidebar} />
           <SidebarLink title="Tooltips & Popovers" route="/ui/tooltips" onClick={hideSidebar} />
-          <SidebarLink title="Typography" route="/ui/typography" onClick={hideSidebar} />
+          <SidebarLink title="Typography" route="/ui/typography" onClick={hideSidebar} /> */}
         </SidebarCategory>
-        <SidebarLink title="Mail Application" icon="envelope" route="/mail" onClick={hideSidebar} />
+        {/* <SidebarLink title="Mail Application" icon="envelope" route="/mail" onClick={hideSidebar} />
         <SidebarLink title="Chat Application" icon="bubble" route="/chat" onClick={hideSidebar} />
         <SidebarLink title="Todo Application" newLink icon="book" route="/todo" onClick={hideSidebar} />
         <SidebarCategory title="Forms" icon="file-add" sidebarCollapse={sidebarCollapse}>
@@ -139,20 +142,21 @@ const SidebarContent = ({
             newLink
             onClick={hideSidebar}
           />
-        </SidebarCategory>
-      </ul>
+        </SidebarCategory> */}
+      </ul>      
       <ul className="sidebar__block">
-        <SidebarCategory title="Account" icon="user" isNew sidebarCollapse={sidebarCollapse}>
-          <SidebarLink title="Email Confirmation" route="/account/email_confirmation" />
+        <SidebarCategory title="Account" icon="user" sidebarCollapse={sidebarCollapse}>
+          {/* <SidebarLink title="Email Confirmation" route="/account/email_confirmation" />
           <SidebarLink title="Lock Screen" route="/lock_screen" />
           <SidebarLink title="Log In Photo" route="/log_in_photo" />
-          <SidebarLink title="Profile" route="/account/profile" onClick={hideSidebar} />
           <SidebarLink title="Register" route="/register" />
           <SidebarLink title="Register Photo" route="/register_photo" />
           <SidebarLink title="Reset Password" route="/reset_password" newLink />
-          <SidebarLink title="Reset Password Photo" route="/reset_password_photo" newLink />
+          <SidebarLink title="Reset Password Photo" route="/reset_password_photo" newLink /> */}
+          <SidebarLink title="Profile" route="/account/profile" onClick={hideSidebar} />
+          <SidebarLink title="Add Funds" route="/default_pages/pricing_cards" onClick={hideSidebar} />
         </SidebarCategory>
-        <SidebarCategory title="E-commerce" icon="cart" sidebarCollapse={sidebarCollapse}>
+        {/* <SidebarCategory title="E-commerce" icon="cart" sidebarCollapse={sidebarCollapse}>
           <SidebarLink title="Cart" route="/e-commerce/cart" onClick={hideSidebar} />
           <SidebarLink title="Catalog" route="/e-commerce/catalog" onClick={hideSidebar} />
           <SidebarLink title="Orders List" route="/e-commerce/orders_list" onClick={hideSidebar} />
@@ -178,9 +182,9 @@ const SidebarContent = ({
             <SidebarLink title="Third Level Item" />
             <SidebarLink title="Third Level Item" />
           </SidebarCategory>
-        </SidebarCategory>
+        </SidebarCategory> */}
       </ul>
-      <ul className="sidebar__block">
+      {/* <ul className="sidebar__block">
         <SidebarLink title="Log Out" icon="exit" route="/log_in" />
       </ul>
       <ul className="sidebar__block">
@@ -190,7 +194,7 @@ const SidebarContent = ({
           route="/documentation/introduction"
           onClick={hideSidebar}
         />
-      </ul>
+      </ul> */}
     </div>
   );
 };

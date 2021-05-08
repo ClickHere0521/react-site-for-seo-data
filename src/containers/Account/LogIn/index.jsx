@@ -34,7 +34,7 @@ const LogIn = ({ changeIsOpenModalFireBase }) => {
             onSubmit
             form="log_in_form"
           />
-          <div className="account__or">
+          {/* <div className="account__or">
             <p>Or Easily Using</p>
           </div>
           <div className="account__social">
@@ -49,7 +49,7 @@ const LogIn = ({ changeIsOpenModalFireBase }) => {
             <Button className="account__social-btn account__social-btn--auth0" onClick={() => loginWithRedirect({})}>
               <img className="customizer__btn-icon" src={auth0Icon} alt="icon" />
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

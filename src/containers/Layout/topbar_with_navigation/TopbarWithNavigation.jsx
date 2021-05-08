@@ -13,7 +13,7 @@ const TopbarWithNavigation = ({ changeMobileSidebarVisibility }) => (
   <div className="topbar topbar--navigation">
     <div className="topbar__left">
       <TopbarSidebarButton changeMobileSidebarVisibility={changeMobileSidebarVisibility} />
-      <Link className="topbar__logo" to="/online_marketing_dashboard" />
+      <Link className="topbar__logo" to="/api_dashboard" />
     </div>
     <TopbarNav />
     <div className="topbar__right">

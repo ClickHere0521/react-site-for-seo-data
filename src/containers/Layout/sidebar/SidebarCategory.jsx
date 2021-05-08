@@ -6,7 +6,7 @@ import classNames from 'classnames';
 const SidebarCategory = ({
   title, icon, isNew, children, sidebarCollapse,
 }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const categoryClass = classNames({
     'sidebar__category-wrap': true,
     'sidebar__category-wrap--open': isCollapsed,
