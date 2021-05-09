@@ -12,7 +12,7 @@ const TopbarLeftCredits = () => {
     <div className="topbar__collapse">
       <button className="topbar__btn" type="button" onClick={toggleNotification}>
         <CreditCardIcon />
-        <p className="topbar__avatar-name"> 1000 Credits Left </p>
+        <p className="topbar__avatar-name"> 0 Credits Left </p>
       </button>
     </div>
   );

@@ -13,12 +13,12 @@ const CardBasic = () => (
           <img className="pricing-card__img" src={paperPlane} alt="" />
           <h3 className="pricing-card__plan">Basic</h3>
           <hr />
-          <p className="pricing-card__price">$0<span>/mo</span></p>
-          <p className="pricing-card__feature">2 Users</p>
-          <p className="pricing-card__feature">500 Gb storage</p>
-          <p className="pricing-card__feature pricing-card__feature--inactive">Monthly update</p>
+          <p className="pricing-card__price">$30<span>/package</span></p>
+          <p className="pricing-card__feature">30 credits</p>
+          <p className="pricing-card__feature">Keyword Search</p>
+          <p className="pricing-card__feature pricing-card__feature--inactive">Download Report</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Free support</p>
-          <Button className="pricing-card__button" color="primary">Sign Up</Button>
+          <Button className="pricing-card__button" color="primary">Buy Now</Button>
         </div>
       </CardBody>
     </Card>

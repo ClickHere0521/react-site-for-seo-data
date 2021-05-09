@@ -13,12 +13,12 @@ const CardPro = () => (
           <img className="pricing-card__img" src={airplane} alt="" />
           <h3 className="pricing-card__plan">Pro</h3>
           <hr />
-          <p className="pricing-card__price">$10<span>/mo</span></p>
-          <p className="pricing-card__feature">6 Users</p>
-          <p className="pricing-card__feature">1 Tb storage</p>
-          <p className="pricing-card__feature">Monthly update</p>
+          <p className="pricing-card__price">$160<span>/package</span></p>
+          <p className="pricing-card__feature">400 credits</p>
+          <p className="pricing-card__feature">Keyword Search</p>
+          <p className="pricing-card__feature pricing-card__feature--inactive">Download Report</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Free support</p>
-          <Button className="pricing-card__button" color="primary">Sign Up</Button>
+          <Button className="pricing-card__button" color="primary">Buy Now</Button>
         </div>
       </CardBody>
     </Card>

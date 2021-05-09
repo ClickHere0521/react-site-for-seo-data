@@ -47,7 +47,7 @@ const TopbarProfile = ({ auth0, user }) => {
             path="/account/profile"
             onClick={toggleProfile}
           />
-          <TopbarMenuLink
+          {/* <TopbarMenuLink
             title="Calendar"
             icon="calendar-full"
             path="/default_pages/calendar"
@@ -85,7 +85,13 @@ const TopbarProfile = ({ auth0, user }) => {
               path="/log_in"
               onClick={auth0.logout}
             />
-          )}
+          )} */}
+          <TopbarMenuLink
+            title="Add Funds"
+            icon="money"
+            path="/default_pages/pricing_cards"
+            onClick={toggleProfile}
+          />
           <TopbarMenuLink
             title="Log Out"
             icon="exit"

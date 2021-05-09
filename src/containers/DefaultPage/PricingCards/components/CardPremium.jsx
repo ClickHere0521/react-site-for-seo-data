@@ -13,12 +13,12 @@ const CardPremium = () => (
           <img className="pricing-card__img" src={rocket} alt="" />
           <h3 className="pricing-card__plan">Premium</h3>
           <hr />
-          <p className="pricing-card__price">$15<span>/mo</span></p>
-          <p className="pricing-card__feature">Unlimited Users</p>
-          <p className="pricing-card__feature">100 Tb storage</p>
-          <p className="pricing-card__feature">Monthly update</p>
-          <p className="pricing-card__feature">Free support</p>
-          <Button className="pricing-card__button" color="primary">Sign Up</Button>
+          <p className="pricing-card__price">$200<span>/package</span></p>
+          <p className="pricing-card__feature">500 credits</p>
+          <p className="pricing-card__feature">Keyword Search</p>
+          <p className="pricing-card__feature pricing-card__feature--inactive">Download Report</p>
+          <p className="pricing-card__feature pricing-card__feature--inactive">Free support</p>
+          <Button className="pricing-card__button" color="primary">Buy Now</Button>
         </div>
       </CardBody>
     </Card>
