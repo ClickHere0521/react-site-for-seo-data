@@ -10,17 +10,17 @@ const withAuthFirebase = (WrappedComponent) => {
   const HocAuth = (props) => {
     const { history, auth: login } = props;
     const [error, setError] = useState('');
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const closeModal = () => {
       setError('');
       setIsOpen(false);
     };
 
-    const openModal = () => {
-      setIsOpen(true);
-      setError('');
-    };
+    // const openModal = () => {
+    //   setIsOpen(true);
+    //   setError('');
+    // };
 
     const onLogin = (providerName = 'local') => async (userProps) => {
       setError('');
@@ -44,7 +44,7 @@ const withAuthFirebase = (WrappedComponent) => {
           closeModal={closeModal}
           onLogin={onLogin}
         />
-        <WrappedComponent {...props} changeIsOpenModalFireBase={openModal} />
+        <WrappedComponent {...props} changeIsOpenModalFireBase={isOpen} />
       </div>
     );
   };

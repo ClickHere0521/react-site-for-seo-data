@@ -4,7 +4,6 @@ import { Col, Row, Container } from 'reactstrap';
 
 // Import Images
 const background = `${process.env.PUBLIC_URL}/img/landing/header_bg.png`;
-const img = `${process.env.PUBLIC_URL}/img/landing/macbook.png`;
 const homeImg = `${process.env.PUBLIC_URL}/img/landing/home-img.png`;
 
 const Header = () => (
