@@ -1,9 +1,11 @@
-// export default {
-//   apiKey: YOUR_API_KEY,
-//   authDomain: YOUR_AUTH_DOMAIN,
-//   databaseURL: YOUR_DATABASE_URL,
-//   projectId: YOUR_PROJECT_ID,
-//   storageBucket: '',
-//   messagingSenderId: YOUR_MESSAGING_SENDER_ID,
-//   appId: YOUR_APP_ID,
-// };
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+export default {
+    apiKey: 'AIzaSyDfHR2oy8LEL6_Z-gy-WcnDIvWaS4QTKQM',
+    authDomain: 'sem-searches.firebaseapp.com',
+    projectId: 'sem-searches',
+    storageBucket: 'sem-searches.appspot.com',
+    messagingSenderId: '1054560579434',
+    appId: '1:1054560579434:web:5426227d2c3cbce00c3f13',
+    measurementId: 'G-J8326SX0C9',
+  };

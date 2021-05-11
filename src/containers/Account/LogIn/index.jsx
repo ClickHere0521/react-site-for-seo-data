@@ -4,6 +4,9 @@ import { useAuth0 } from '@/shared/components/auth/withAuth0';
 import Loading from '@/shared/components/Loading';
 import ModalLoginForm from '@/shared/components/ModalLoginForm';
 import { AbstractProvider } from '@/shared/components/auth/AbstractProvider';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { auth } from '@/redux/actions/authActions';
 
 const LogIn = (props) => {
   const [error, setError] = useState('');
@@ -17,11 +20,11 @@ const LogIn = (props) => {
     return (<Loading loading={loading} />);
   }
 
-  const onLogin = (providerName = 'local') => async (userProps) => {
-    setError('');
+  const onLogin = providerName => async (userProps) => {
+    setError('');    
     try {
       const provider = new AbstractProvider(providerName);
-      const res = await provider.login(userProps);
+      const res = await provider.login(userProps);      
       login(provider.getUserObjectByProvider(res));
       history.push('/app_dashboard');
     } catch (e) {
@@ -61,4 +64,4 @@ LogIn.propTypes = {
   auth: PropTypes.func.isRequired,
 };
 
-export default LogIn;
+export default connect(() => {}, { auth })(withRouter(LogIn));

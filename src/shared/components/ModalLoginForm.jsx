@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Modal, ModalHeader, ModalBody, Button,
+  Button,
 } from 'reactstrap';
 import GooglePlusIcon from 'mdi-react/GooglePlusIcon';
 import FacebookIcon from 'mdi-react/FacebookIcon';
@@ -9,7 +9,7 @@ import LogInForm from './loginForm/LogInForm';
 import { providers } from './auth/AbstractProvider';
 
 const ModalLoginForm = ({
-  title, isOpen, error, closeModal, onLogin,
+  error, onLogin,
 }) => (
   <div>
     <LogInForm
@@ -42,17 +42,12 @@ const ModalLoginForm = ({
 );
 
 ModalLoginForm.propTypes = {
-  title: PropTypes.string,
   error: PropTypes.string,
-  isOpen: PropTypes.bool,
-  closeModal: PropTypes.func.isRequired,
   onLogin: PropTypes.func,
 };
 
 ModalLoginForm.defaultProps = {
-  title: '',
   error: '',
-  isOpen: false,
   onLogin: () => () => {},
 };
 
