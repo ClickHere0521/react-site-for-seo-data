@@ -54,13 +54,12 @@ const Customizer = ({
       </button>
       <div className={customizerClass} hidden={!isOpen}>
         <div className="customizer__title-wrap">
-          <h5>Theme Customizer</h5>
+          <h5>User Customizer</h5>
           <button className="customizer__close-btn" type="button" onClick={handleOpen}>
             <CloseIcon />
           </button>
         </div>
-        <p className="customizer__caption">This customizer allows you to see the different variations of the EasyDev.
-          Create your own visual style for every project you do!
+        <p className="customizer__caption">You can customize this site as you want.
         </p>
         <ToggleCollapsedMenu changeSidebarVisibility={changeSidebarVisibility} sidebar={sidebar} />
         <ToggleTopMenu toggleTopNavigation={toggleTopNavigation} customizer={customizer} />

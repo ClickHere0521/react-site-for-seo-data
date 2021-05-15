@@ -7,10 +7,12 @@ import { AbstractProvider } from '@/shared/components/auth/AbstractProvider';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { auth } from '@/redux/actions/authActions';
+import firebase from 'firebase';
 
 const LogIn = (props) => {
   const [error, setError] = useState('');
   const { history, auth: login } = props;
+
 
   const {
      loading,
@@ -24,9 +26,21 @@ const LogIn = (props) => {
     setError('');    
     try {
       const provider = new AbstractProvider(providerName);
-      const res = await provider.login(userProps);      
+      const res = await provider.login(userProps);    
+      console.log(res);
+      const db = firebase.database().ref(`/users/${res.user.uid}`);             
       login(provider.getUserObjectByProvider(res));
-      history.push('/app_dashboard');
+      try {
+        await db.set({
+          uid: res.user.uid,
+          id: 'fdas',
+          credits: 0,
+        });        
+      } catch (e) {
+        setError(e.message);
+      }
+
+      history.push('/api_dashboard');
     } catch (e) {
       setError(e.message);
     }

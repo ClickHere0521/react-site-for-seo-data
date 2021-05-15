@@ -6,6 +6,7 @@ import {
 import Slider from '@/shared/components/range_slider/Slider';
 import Modal from '@/shared/components/Modal';
 
+
 const CardSlider = () => {
   const { t } = useTranslation('common');
 

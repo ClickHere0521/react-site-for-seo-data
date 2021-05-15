@@ -11,6 +11,7 @@ import { LoadScript } from '@react-google-maps/api';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import Auth0Provider from '@/shared/components/auth/withAuth0';
+// import { FirebaseDatabaseProvider } from '@react-firebase/database';
 import Router from './Router';
 import store from './store';
 import ScrollToTop from './ScrollToTop';
@@ -67,8 +68,9 @@ const App = () => {
       >
         <BrowserRouter basename="">
           <I18nextProvider i18n={i18n}>
+            {/* <FirebaseDatabaseProvider> */}
             <LoadScript
-              googleMapsApiKey="" /* Paste your Google Maps Api Key here */
+              googleMapsApiKey=""
             >
               <ScrollToTop>
                 <ConnectedThemeComponent>
@@ -76,6 +78,7 @@ const App = () => {
                 </ConnectedThemeComponent>
               </ScrollToTop>
             </LoadScript>
+            {/* </FirebaseDatabaseProvider> */}
           </I18nextProvider>
         </BrowserRouter>
       </Auth0Provider>

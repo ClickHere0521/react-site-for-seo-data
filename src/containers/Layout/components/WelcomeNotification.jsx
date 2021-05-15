@@ -9,9 +9,9 @@ let welcomeNotification = null;
 Notification.newInstance({ style: { top: 65 } }, n => welcomeNotification = n);
 
 const WelcomeNotification = (theme, rtl, setIsNotificationShown, isNotificationShown) => {
-  const title = 'Welcome to the EasyDev!';
-  const message = 'You have successfully registered in the EasyDev. Now you can start to explore the dashboard'
-    + 'interface with a bunch of components and applications. Enjoy!';
+  const title = 'Welcome to the SemSearches!';
+  const message = 'You have successfully registered in the SemSearches. Now you can start to explore the site'
+    + 'interface with a bunch of APIs. Enjoy!';
   const initialProps = {
     content: <BasicNotification
       title={title}
