@@ -18,7 +18,7 @@ const SliderWithScale = () => {
             <Slider
               min={0}
               max={100}
-              value={34}
+              defaultValue={34}
               marks={{
                 0: '0',
                 10: '10',

@@ -13,8 +13,8 @@ const CardBasic = () => (
           <img className="pricing-card__img" src={paperPlane} alt="" />
           <h3 className="pricing-card__plan">Basic</h3>
           <hr />
-          <p className="pricing-card__price">$30<span>/package</span></p>
-          <p className="pricing-card__feature">30 credits</p>
+          <p className="pricing-card__price">$50<span>/pack</span></p>
+          <p className="pricing-card__feature">75 credits</p>
           <p className="pricing-card__feature">Keyword Search</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Download Report</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Free support</p>

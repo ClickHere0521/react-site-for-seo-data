@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Button, ButtonToolbar, Modal } from 'reactstrap';
 import classNames from 'classnames';
 import { RTLProps } from '@/shared/prop-types/ReducerProps';
@@ -10,6 +10,7 @@ const ModalComponent = ({
 }) => {
   const [modal, setModal] = useState(false);
 
+  const { price, credits } = useSelector(state => state.credits);
   const toggle = () => {
     setModal(prevState => !prevState);
   };
@@ -55,6 +56,8 @@ const ModalComponent = ({
           />
           {header ? '' : Icon}
           <h4 className="text-modal  modal__title">{title}</h4>
+          <h5 className="text-modal  modal__title"> Price: {price}</h5>
+          <h5 className="text-modal  modal__title"> Credits: {credits}</h5>
         </div>
         <div className="modal__body">
           {message}

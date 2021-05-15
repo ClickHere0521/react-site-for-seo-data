@@ -13,8 +13,8 @@ const CardPro = () => (
           <img className="pricing-card__img" src={airplane} alt="" />
           <h3 className="pricing-card__plan">Pro</h3>
           <hr />
-          <p className="pricing-card__price">$160<span>/package</span></p>
-          <p className="pricing-card__feature">400 credits</p>
+          <p className="pricing-card__price">$150<span>/pack</span></p>
+          <p className="pricing-card__feature">375 credits</p>
           <p className="pricing-card__feature">Keyword Search</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Download Report</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Free support</p>

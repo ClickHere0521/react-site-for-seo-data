@@ -13,8 +13,8 @@ const CardSpecial = () => (
           <img className="pricing-card__img" src={balloon} alt="" />
           <h3 className="pricing-card__plan">Special</h3>
           <hr />
-          <p className="pricing-card__price">$80<span>/package</span></p>
-          <p className="pricing-card__feature">120 credits</p>
+          <p className="pricing-card__price">$100<span>/pack</span></p>
+          <p className="pricing-card__feature">200 credits</p>
           <p className="pricing-card__feature">Keyword Search</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Download Report</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Free support</p>

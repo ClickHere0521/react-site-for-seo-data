@@ -8,6 +8,7 @@ import newOrderTableReducer from './newOrderTableReducer';
 import customizerReducer from './customizerReducer';
 import todoReducer from './todoReducer';
 import authReducer from './authReducer';
+import creditsReducer from './creditsReducer';
 
 export {
   themeReducer,
@@ -20,4 +21,5 @@ export {
   blocksShadowsReducer,
   todoReducer,
   authReducer,
+  creditsReducer,
 };
