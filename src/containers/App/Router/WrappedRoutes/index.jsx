@@ -42,6 +42,7 @@ export default () => (
       <Route path="/e-commerce" component={ECommerce} />
       <Route path="/default_pages" component={DefaultPages} />
       <Route path="/documentation" component={Documentation} />
+      <Route path="/serp" component={Documentation} />
     </div>
   </div>
 );

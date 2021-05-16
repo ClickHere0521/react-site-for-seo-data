@@ -5,14 +5,15 @@ import Loading from '@/shared/components/Loading';
 import ModalLoginForm from '@/shared/components/ModalLoginForm';
 import { AbstractProvider } from '@/shared/components/auth/AbstractProvider';
 import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { auth } from '@/redux/actions/authActions';
 import firebase from 'firebase';
+import { remainCreditsActions } from '@/redux/actions/creditsActions';
 
 const LogIn = (props) => {
   const [error, setError] = useState('');
   const { history, auth: login } = props;
-
+  const remainCreditsDispatch = useDispatch();
 
   const {
      loading,
@@ -27,18 +28,12 @@ const LogIn = (props) => {
     try {
       const provider = new AbstractProvider(providerName);
       const res = await provider.login(userProps);    
-      console.log(res);
       const db = firebase.database().ref(`/users/${res.user.uid}`);             
       login(provider.getUserObjectByProvider(res));
-      try {
-        await db.set({
-          uid: res.user.uid,
-          id: 'fdas',
-          credits: 0,
-        });        
-      } catch (e) {
-        setError(e.message);
-      }
+      db.once('value')
+        .then((snapshot) => {
+          remainCreditsDispatch(remainCreditsActions(snapshot.val().credits));
+        });
 
       history.push('/api_dashboard');
     } catch (e) {

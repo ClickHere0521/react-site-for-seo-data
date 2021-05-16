@@ -9,6 +9,7 @@ import customizerReducer from './customizerReducer';
 import todoReducer from './todoReducer';
 import authReducer from './authReducer';
 import creditsReducer from './creditsReducer';
+import apiReducer from './apiReducer';
 
 export {
   themeReducer,
@@ -22,4 +23,5 @@ export {
   todoReducer,
   authReducer,
   creditsReducer,
+  apiReducer,
 };

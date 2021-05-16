@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { Col, Container, Row } from 'reactstrap';
 import { RTLProps } from '@/shared/prop-types/ReducerProps';
 import Visits from './components/Visits';
-import TotalPageViews from './components/TotalPageViews';
-import NewUsers from './components/NewUsers';
+import TotalCredits from './components/TotalCredits';
+import FetchedData from './components/FetchedData';
 import BounceRate from './components/BounceRate';
 import ABTestingAnalytics from './components/ABTestingAnalytics';
 import BounceRateArea from './components/BounceRateArea';
@@ -29,8 +29,8 @@ const OnLineMarketingDashboard = ({ rtl }) => {
       </Row>
       <Row>
         <Visits />
-        <TotalPageViews />
-        <NewUsers />
+        <TotalCredits />
+        <FetchedData />
         <BounceRate />
       </Row>
       <Row>

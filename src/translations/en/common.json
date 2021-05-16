@@ -1,9 +1,9 @@
 {
   "api_dashboard": {
-    "page_title": "API Dashboard",
+    "page_title": "Dashboard",
     "visits":  "Visits",
-    "total_page_views":  "Total page views",
-    "new_users":  "New users",
+    "total_credits":  "Total credits",
+    "fetched_data":  "Fetched Data",
     "bounce_rate":  "Bounce rate",
     "ab_testing":  "A/B testing analytics",
     "visitors_sessions":  "Visitor sessions",

@@ -1,12 +1,17 @@
 import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { apiOptionActions } from '@/redux/actions/apiActions';
 
 export const SelectField = ({
-  onChange, value, name, placeholder, options,
+  onChange, value, name, placeholder, options, selectType,
 }) => {
+  const apiOptionDispatch = useDispatch();
+
   const handleChange = (selectedOption) => {
     onChange(selectedOption);
+    apiOptionDispatch(apiOptionActions(selectType, selectedOption.value));
   };
 
   return (
@@ -38,21 +43,24 @@ SelectField.propTypes = {
       label: PropTypes.string,
     }),
   ]).isRequired,
+  selectType: PropTypes.string,
 };
 
 SelectField.defaultProps = {
   placeholder: '',
   options: [],
+  selectType: '',
 };
 
 const renderSelectField = ({
-  input, meta, options, placeholder, className,
+  input, meta, options, placeholder, className, selectType,
 }) => (
   <div className={`form__form-group-input-wrap ${className}`}>
     <SelectField
       {...input}
       options={options}
       placeholder={placeholder}
+      selectType={selectType}
     />
     {meta.touched && meta.error && <span className="form__form-group-error">{meta.error}</span>}
   </div>
@@ -73,6 +81,7 @@ renderSelectField.propTypes = {
   })),
   placeholder: PropTypes.string,
   className: PropTypes.string,
+  selectType: PropTypes.string,
 };
 
 renderSelectField.defaultProps = {
@@ -80,6 +89,7 @@ renderSelectField.defaultProps = {
   options: [],
   placeholder: '',
   className: '',
+  selectType: '',
 };
 
 export default renderSelectField;

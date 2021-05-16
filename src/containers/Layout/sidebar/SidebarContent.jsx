@@ -14,17 +14,18 @@ const SidebarContent = ({
     <div className="sidebar__content">
       <ul className="sidebar__block">
         <SidebarLink
-          title="API Dashboard"
+          title="Dashboard"
           icon="home"
           route="/api_dashboard"
           onClick={hideSidebar}
         />
       </ul>
       <ul className="sidebar__block">
-        <SidebarCategory title="API Usage" icon="diamond" sidebarCollapse={sidebarCollapse}>
-          <SidebarLink title="Rank Tracker" route="/forms/redux_form/floating_labels_form" onClick={hideSidebar} />
-          <SidebarLink title="SERP" route="/ui/buttons" onClick={hideSidebar} />
-          <SidebarLink title="Keywords Data" route="/ui/carousel" onClick={hideSidebar} />
+        <SidebarCategory title="Usage" icon="diamond" sidebarCollapse={sidebarCollapse}>
+          <SidebarLink title="SERP" route="/ui/panels" onClick={hideSidebar} />
+          <SidebarLink title="Keywords Data" route="/ui/buttons" onClick={hideSidebar} />
+          <SidebarLink title="Business Data" route="/ui/carousel" onClick={hideSidebar} />
+          <SidebarLink title="OnPage" route="/ui/collapse" onClick={hideSidebar} />
         </SidebarCategory>
       </ul>      
       <ul className="sidebar__block">

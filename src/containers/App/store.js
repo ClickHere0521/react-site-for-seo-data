@@ -12,6 +12,7 @@ import {
   roundBordersReducer,
   blocksShadowsReducer,
   creditsReducer,
+  apiReducer,
 } from '@/redux/reducers/index';
 import appConfigReducer from '@/redux/reducers/appConfigReducer';
 import covidReducer from '../Maps/VectorMapWithRequestData/redux/covidReducer';
@@ -32,6 +33,7 @@ const reducer = combineReducers({
   covid: covidReducer,
   todo: todoReducer,
   credits: creditsReducer,
+  api: apiReducer,
 });
 const store = createStore(reducer, applyMiddleware(thunk));
 

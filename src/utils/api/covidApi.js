@@ -7,3 +7,4 @@ export default {
     return get('https://corona.lmao.ninja/v2/countries', { params });
   },
 };
+

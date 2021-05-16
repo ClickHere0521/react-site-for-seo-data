@@ -1,42 +1,34 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Col, Container, Row } from 'reactstrap';
-import DefaultPanel from './components/DefaultPanel';
-import DefaultPanelWithSubheader from './components/DefaultPanelWithSubhead';
-import DefaultPanelDivider from './components/DefaultPanelDivider';
-import LabelPanelDivider from './components/LabelPanelDivider';
-import IconPanelDivider from './components/IconPanelDivider';
-import TabsPanelDivider from './components/TabsPanelDivider';
-import SuccessPanel from './components/SuccessPanel';
-import WarningPanel from './components/WarningPanel';
-import DangerPanel from './components/DangerPanel';
+import HorizontalForm from './components/HorizontalForm';
+import DataReactTable from './components/DataReactTable';
+import CreateTableData from '../CreateData';
+import showResults from './Show';
 
-const Panels = () => {
+
+const BasicForm = () => {
   const { t } = useTranslation('common');
+  const reactTableData = CreateTableData();
 
   return (
     <Container>
       <Row>
         <Col md={12}>
-          <h3 className="page-title">{t('ui_elements.panels.title')}</h3>
-          <h3 className="page-subhead subhead">Use this elements, if you want to show some hints
-            or additional information
+          <h3 className="page-title">SERP EXPLORER</h3>
+          <h3 className="page-subhead subhead">This API will provide you with structured data on the top 100 search results based on a keyword, search engine, location, and other parameters. 
+            If you want to better understand the fields used in request and response snippets, or get familiar with all parameters available in SERP API
           </h3>
         </Col>
       </Row>
       <Row>
-        <DefaultPanel />
-        <DefaultPanelWithSubheader />
-        <DefaultPanelDivider />
-        <LabelPanelDivider />
-        <IconPanelDivider />
-        <TabsPanelDivider />
-        <SuccessPanel />
-        <WarningPanel />
-        <DangerPanel />
+        <HorizontalForm onSubmit={showResults} />
+      </Row>
+      <Row>
+        <DataReactTable reactTableData={reactTableData} />
       </Row>
     </Container>
   );
 };
 
-export default Panels;
+export default BasicForm;

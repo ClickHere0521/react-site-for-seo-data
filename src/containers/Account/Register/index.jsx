@@ -10,7 +10,12 @@ const Register = ({ history }) => {
 
   const registerFireBase = (user) => {
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-      .then(() => {
+      .then((userCredential) => {
+        const db = firebase.database().ref(`/users/${userCredential.user.uid}`); 
+        db.set({
+          uid: userCredential.user.uid,
+          credits: 0,
+        });        
         history.push('/log_in');
       })
       .catch((err) => {
