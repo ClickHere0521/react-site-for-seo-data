@@ -1,4 +1,5 @@
 export const APIOPTIONACTIONS = 'APIOPTIONACTIONS';
+export const APIRESULTACTIONS = 'APIRESULTACTIONS';
 
 export function apiOptionActions(type, value) {    
   return {
@@ -7,3 +8,10 @@ export function apiOptionActions(type, value) {
   };
 }
 
+export function apiResultActions(result) {
+  console.log(result);
+  return {
+    type: APIRESULTACTIONS,
+    payload: result,
+  };
+}

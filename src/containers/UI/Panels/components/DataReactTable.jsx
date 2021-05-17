@@ -5,6 +5,8 @@ import {
 } from 'reactstrap';
 import ReactTableBase from '@/shared/components/table/ReactTableBase';
 import ReactTableCustomizer from '@/shared/components/table/components/ReactTableCustomizer';
+import { CSVLink } from 'react-csv';
+import FileExcelOutlineIcon from 'mdi-react/FileExcelOutlineIcon';
 
 const reorder = (rows, startIndex, endIndex) => {
   const result = Array.from(rows);
@@ -123,6 +125,17 @@ const DataReactTable = ({ reactTableData }) => {
             updateDraggableData={updateDraggableData}
             tableConfig={tableConfig}
           />
+          <div style={{ paddingLeft: 10 }}>
+            <CSVLink
+              data={rows}
+              filename="data.csv"
+              className="hidden"
+              target="_blank"
+            >
+              <FileExcelOutlineIcon />
+              Download csv
+            </CSVLink>
+          </div>
         </CardBody>
       </Card>
     </Col>

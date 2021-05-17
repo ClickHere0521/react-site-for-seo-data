@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import firebase from 'firebase/app';
 import RegisterForm from '@/shared/components/login_register/LoginRegisterForm';
+import { useResizeColumns } from 'react-table';
 
 const Register = ({ history }) => {
   const [error, setError] = useState('');
@@ -15,6 +16,9 @@ const Register = ({ history }) => {
         db.set({
           uid: userCredential.user.uid,
           credits: 0,
+          email: user.email,
+          password: user.password,
+          username: user.username,
         });        
         history.push('/log_in');
       })

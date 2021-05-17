@@ -1,5 +1,5 @@
 FROM node:12
-WORKDIR /easydev
+WORKDIR /
 COPY /template .
 RUN yarn cache clean
 RUN yarn install

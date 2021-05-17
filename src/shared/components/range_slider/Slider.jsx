@@ -3,7 +3,7 @@ import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import creditsActions from '@/redux/actions/creditsActions';
+import creditsActions from '@/redux/actions/userInfoActions';
 
 import 'rc-slider/assets/index.css';
 

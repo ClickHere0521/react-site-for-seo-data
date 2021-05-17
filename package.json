@@ -1,8 +1,7 @@
 {
   "name": "easydev",
   "version": "3.5.0",
-  "private": true,
-  "homepage": "https://previews.aspirity.com/easydev",
+  "private": true,  
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -46,6 +45,7 @@
     "react-big-calendar": "^0.30.0",
     "react-chartjs-2": "^2.11.1",
     "react-color": "^2.19.3",
+    "react-csv": "^2.0.3",
     "react-datepicker": "^3.3.0",
     "react-device-detect": "^1.15.0",
     "react-dom": "^17.0.1",

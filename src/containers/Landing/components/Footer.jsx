@@ -12,13 +12,13 @@ const Footer = () => (
           <p className="landing__footer-text">
             Made with love and tons of coffee in
             <b>
-              <a
+              {/* <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://aspirity.com/?utm_source=easydev_landing&utm_medium=referral&utm_campaign=templates"
-              >
-                {' '}Aspirity Studio
-              </a>
+                href="/"
+              > */}
+              {' '}JOEL
+              {/* </a> */}
             </b>
           </p>
         </Col>

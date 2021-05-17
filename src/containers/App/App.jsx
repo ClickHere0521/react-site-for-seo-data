@@ -66,7 +66,7 @@ const App = () => {
         returnTo={`${window.location.origin}/easydev/api_dashboard`}
         onRedirectCallback={onRedirectCallbackAuth0}
       >
-        <BrowserRouter basename="">
+        <BrowserRouter basename="/">
           <I18nextProvider i18n={i18n}>
             {/* <FirebaseDatabaseProvider> */}
             <LoadScript

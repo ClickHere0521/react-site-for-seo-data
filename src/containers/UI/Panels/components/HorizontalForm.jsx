@@ -8,11 +8,14 @@ import {
 import { Field, reduxForm } from 'redux-form';
 import AlertCircleIcon from 'mdi-react/AlertCircleIcon';
 import renderSelectField from '@/shared/components/form/Select';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { apiOptionActions, apiResultActions } from '@/redux/actions/apiActions';
 import dataApi from '../../../../utils/api/dataApi';
 
 const HorizontalForm = ({ handleSubmit, reset }) => {
   const { t } = useTranslation('common');
+  const apiOptionDispatch = useDispatch();
+  const apiResultDispatch = useDispatch();
   const introduction = [
     {
       type: 'google',
@@ -60,10 +63,24 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
     { value: 'news', label: 'News' },
     { value: 'images', label: 'Images' },
   ]);
-  const { se, setype } = useSelector(state => state.api);
+  const [ostypeOptions, setOstypeOptions] = useState([
+    { value: 'windows', label: 'Windows' },
+    { value: 'macos', label: 'Mac OS' },
+  ]);
+  const [sep, setSep] = useState('');
+  const [keyword, setKeyword] = useState('');
+  const { se, setype, device } = useSelector(state => state.api);
   const dataApiProps = useSelector(state => state.api);
-  const handleApiSubmit = () => {
-    dataApi(dataApiProps);
+  const handleApiSubmit = async () => {
+    try {
+      const result = await dataApi(dataApiProps);
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
+
+    
+    // apiResultDispatch(apiResultActions(result));
   };
 
   useEffect(() => {
@@ -126,6 +143,27 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
       default: break;
     }
   }, [setype]);
+
+  useEffect(() => {
+    switch (device) {
+      case 'desktop': {
+        setOstypeOptions([
+          { value: 'windows', label: 'Windows' },
+          { value: 'macos', label: 'Mac OS' },
+        ]); 
+        break;
+      } 
+      case 'mobile': {
+        setOstypeOptions([
+          { value: 'android', label: 'Android' },
+          { value: 'ios', label: 'iOS' },
+        ]);  
+        break;
+      } 
+
+      default: break;
+    }
+  }, [device]);
 
   return (
     <Col md={12} lg={12}>
@@ -559,9 +597,21 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   placeholder="Desktop"
                   selectType="device"
                   options={[
-                    { value: 'Desktop', label: 'Desktop' },
-                    { value: 'Mobile', label: 'Mobile' },
+                    { value: 'desktop', label: 'Desktop' },
+                    { value: 'mobile', label: 'Mobile' },
                   ]}
+                />
+              </div>
+            </div>
+            <div className="form__form-group">
+              <span className="form__form-group-label">OS:</span>
+              <div className="form__form-group-field">
+                <Field
+                  name="os"
+                  component={renderSelectField}
+                  placeholder="Windows"
+                  selectType="os"
+                  options={ostypeOptions}
                 />
               </div>
             </div>
@@ -572,8 +622,13 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   name="sep"
                   component="input"
                   type="text"
-                  placeholder="example: &tbs=qdrh"
+                  placeholder="example: &tbs=qdr:h"
                   selectType="sep"
+                  onChange={(e) => {
+                    setSep(e.target.value);
+                    apiOptionDispatch(apiOptionActions('sep', e.target.value));
+                  }}
+                  value={sep}
                 />
               </div>
             </div>
@@ -586,6 +641,11 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   type="text"
                   selectType="keyword"
                   placeholder="weather forecast"
+                  onChange={(e) => {
+                    setKeyword(e.target.value);
+                    apiOptionDispatch(apiOptionActions('keyword', e.target.value));
+                  }}
+                  value={keyword}
                 />
                 <UncontrolledTooltip placement="bottom" target="keywordTooltip">
                   You can enter up to 700 symbols in the keyword field. If you use a search operator, the charge per task will be muliplied by 5

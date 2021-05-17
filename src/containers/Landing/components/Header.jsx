@@ -15,7 +15,7 @@ const Header = () => (
             <Col lg={6}>
               <div className="hero-wrapper mb-4">
                 <p className="font-16 text-uppercase">Get the SEO data today</p>
-                <h1 className="hero-title mb-4">Make your Business Amazing & Awesome with <span className="text-primary">JOEL</span></h1>
+                <h1 className="hero-title mb-4">Make your Business Amazing & Awesome with <span className="text-primary">SEMSEARCHES</span></h1>
 
                 <p>To a Business person, it will seem like simplified SEO tool, as a kind friend of his work</p>
 

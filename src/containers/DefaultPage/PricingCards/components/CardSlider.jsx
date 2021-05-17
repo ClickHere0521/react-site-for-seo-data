@@ -56,6 +56,7 @@ const CardSlider = () => {
               title="Congratulations!"
               btn="Buy Now"
               message="Checkout with Paypal"
+              type="slider"
             />
           </ButtonToolbar>
         </CardBody>

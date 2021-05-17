@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export default async (dataApiProps) => {
     const {
-      se, setype, location, language, device, sep, keyword, 
+      se, setype, location, language, device, os, sep, keyword, 
     } = dataApiProps;
-    console.log(se, setype);
+    console.log(dataApiProps);
     try {
         await axios({
             method: 'post',
@@ -14,11 +14,12 @@ export default async (dataApiProps) => {
                 password: '9815613a0ce27ac5',
             },
             data: [{
-              keyword: 'weather forecast',
+              keyword,
               location_code: location,  
               language_code: language,
               device,
-              os: sep,
+              os,
+              search_param: sep,
             }],
             headers: {
                 'content-type': 'application/json',
@@ -26,7 +27,9 @@ export default async (dataApiProps) => {
         }).then((response) => {
             const { result } = response.data.tasks[0];
             // Result data
-            console.log(result);
+            console.log(result[0].items[0]);
+            
+            return result[0].items[0];
         }).catch((error) => {
             console.log(error);
         });

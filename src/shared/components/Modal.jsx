@@ -9,14 +9,15 @@ import { PayPalButton } from 'react-paypal-button-v2';
 
 
 const ModalComponent = ({
-  color, btn, title, message, colored, header, rtl,
+  color, btn, title, message, colored, header, rtl, type,
 }) => {
   const [modal, setModal] = useState(false);
   const { price, credits } = useSelector(state => state.credits);
   const toggle = () => {
     setModal(prevState => !prevState);
   };
-
+  let totalAmount;
+  let totalCredits;
   let Icon;
 
   switch (color) {
@@ -35,6 +36,15 @@ const ModalComponent = ({
     default:
       break;
   }
+  switch (type) {
+    case 'basic': totalAmount = 50; totalCredits = 75; break;
+    case 'premium': totalAmount = 100; totalCredits = 200; break;
+    case 'pro': totalAmount = 150; totalCredits = 375; break;
+    case 'special': totalAmount = 200; totalCredits = 500; break;
+    case 'slider': totalAmount = price; totalCredits = credits; break;
+    default: totalAmount = 100; break;
+  }
+
   const modalClass = classNames({
     'modal-dialog--colored': colored,
     'modal-dialog--header': header,
@@ -42,7 +52,7 @@ const ModalComponent = ({
 
   return (
     <div>
-      <Button color={color} onClick={toggle}>{btn}</Button>
+      <Button className="pricing-card__button" color={color} onClick={toggle}>{btn}</Button>
       <Modal
         isOpen={modal}
         toggle={toggle}
@@ -58,12 +68,12 @@ const ModalComponent = ({
           />
           {header ? '' : Icon}
           <h4 className="text-modal  modal__title">{title}</h4>
-          <h5 className="text-modal  modal__title"> Price: {price}$</h5>
-          <h5 className="text-modal  modal__title"> Credits: {credits}</h5>
+          <h5 className="text-modal  modal__title"> Price: {totalAmount}$</h5>
+          <h5 className="text-modal  modal__title"> Credits: {totalCredits}</h5>
         </div>
         <div className="modal__body">
           <PayPalButton
-            amount={price}
+            amount={totalAmount}
         // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
             onSuccess={(details, data) => {
           alert(`Transaction completed by ${ details.payer.name.given_name}`);
@@ -99,6 +109,7 @@ ModalComponent.propTypes = {
   header: PropTypes.bool,
   btn: PropTypes.string.isRequired,
   rtl: RTLProps.isRequired,
+  type: PropTypes.string,
 };
 
 ModalComponent.defaultProps = {
@@ -106,6 +117,7 @@ ModalComponent.defaultProps = {
   message: '',
   colored: false,
   header: false,
+  type: '',
 };
 
 export default connect(state => ({

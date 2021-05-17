@@ -10,7 +10,7 @@ export const SelectField = ({
   const apiOptionDispatch = useDispatch();
 
   const handleChange = (selectedOption) => {
-    onChange(selectedOption);
+    onChange(selectedOption);    
     apiOptionDispatch(apiOptionActions(selectType, selectedOption.value));
   };
 

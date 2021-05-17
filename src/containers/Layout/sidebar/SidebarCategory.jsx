@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
 import classNames from 'classnames';
+import HomeHeartIcon from 'mdi-react/HomeHeartIcon';
+import DiamondOutlineIcon from 'mdi-react/DiamondOutlineIcon';
+import UserTieIcon from 'mdi-react/UserTieIcon';
 
 const SidebarCategory = ({
   title, icon, isNew, children, sidebarCollapse,
@@ -17,10 +20,19 @@ const SidebarCategory = ({
     setIsCollapsed(!isCollapsed);
   };
 
+  const renderIcon = () => {
+    switch (icon) {
+      case 'home': return <HomeHeartIcon size={18} />;
+      case 'diamond': return <DiamondOutlineIcon size={18} />;
+      case 'user': return <UserTieIcon size={18} />;
+      default: return null;
+    }  
+  };
+
   return (
     <div className={sidebarCollapse ? 'sidebar-collapse-wrapper' : ''}>
       <button className={categoryClass} type="button" onClick={collapseSidebar}>
-        {icon ? <span className={`sidebar__link-icon lnr lnr-${icon}`} /> : ''}
+        {icon ? renderIcon() : ''}
         <p className="sidebar__link-title">{title}
           {isNew && <span className="sidebar__category-new" />}
         </p>

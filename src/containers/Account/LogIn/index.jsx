@@ -8,12 +8,12 @@ import { withRouter } from 'react-router';
 import { connect, useDispatch } from 'react-redux';
 import { auth } from '@/redux/actions/authActions';
 import firebase from 'firebase';
-import { remainCreditsActions } from '@/redux/actions/creditsActions';
+import { userInfoActions } from '@/redux/actions/userInfoActions';
 
 const LogIn = (props) => {
   const [error, setError] = useState('');
   const { history, auth: login } = props;
-  const remainCreditsDispatch = useDispatch();
+  const userInfoDispatch = useDispatch();
 
   const {
      loading,
@@ -31,8 +31,8 @@ const LogIn = (props) => {
       const db = firebase.database().ref(`/users/${res.user.uid}`);             
       login(provider.getUserObjectByProvider(res));
       db.once('value')
-        .then((snapshot) => {
-          remainCreditsDispatch(remainCreditsActions(snapshot.val().credits));
+        .then((snapshot) => {          
+          userInfoDispatch(userInfoActions(snapshot.val()));
         });
 
       history.push('/api_dashboard');

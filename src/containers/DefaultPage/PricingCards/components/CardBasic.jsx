@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  Card, CardBody, Col, Button,
+  Card, CardBody, Col, 
 } from 'reactstrap';
+import Modal from '@/shared/components/Modal';
 
 const paperPlane = `${process.env.PUBLIC_URL}/img/pricing_cards/004-paper-plane.svg`;
 
@@ -18,7 +19,13 @@ const CardBasic = () => (
           <p className="pricing-card__feature">Keyword Search</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Download Report</p>
           <p className="pricing-card__feature pricing-card__feature--inactive">Free support</p>
-          <Button className="pricing-card__button" color="primary">Buy Now</Button>
+          <Modal
+            color="primary"
+            title="Congratulations!"
+            btn="Buy Now"
+            message="Checkout with Paypal"    
+            type="basic"        
+          />
         </div>
       </CardBody>
     </Card>

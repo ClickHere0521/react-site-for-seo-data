@@ -4,7 +4,7 @@ import { Col, Row, Container } from 'reactstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-const logo = `${process.env.PUBLIC_URL}/img/landing/logo.svg`;
+const logo = `${process.env.PUBLIC_URL}/img/landing/logo_dark.png`;
 
 const Landing = () => (
   <div className="landing">

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Col, Container, Row } from 'reactstrap';
 import HorizontalForm from './components/HorizontalForm';
 import DataReactTable from './components/DataReactTable';
-import CreateTableData from '../CreateData';
+import CreateTableData from './CreateData';
 import showResults from './Show';
 
 
