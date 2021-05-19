@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 const TopbarLeftCredits = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const remainCredits = useSelector(state => state.credits.remaincredits);
-
   const toggleNotification = () => {
     setIsCollapsed(!isCollapsed);
   };

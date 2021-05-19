@@ -11,7 +11,6 @@ import { LoadScript } from '@react-google-maps/api';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import Auth0Provider from '@/shared/components/auth/withAuth0';
-// import { FirebaseDatabaseProvider } from '@react-firebase/database';
 import Router from './Router';
 import store from './store';
 import ScrollToTop from './ScrollToTop';

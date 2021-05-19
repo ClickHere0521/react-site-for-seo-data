@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export default async (dataApiProps) => {
+export default async (dataApiProps, handleResult) => {
     const {
       se, setype, location, language, device, os, sep, keyword, 
     } = dataApiProps;
-    console.log(dataApiProps);
+    console.log(`apiParams ${dataApiProps}`);
     try {
         await axios({
             method: 'post',
@@ -26,9 +26,8 @@ export default async (dataApiProps) => {
             },
         }).then((response) => {
             const { result } = response.data.tasks[0];
-            // Result data
-            console.log(result[0].items[0]);
-            
+            console.log('fdsfds', response.data);
+            handleResult(result[0]);
             return result[0].items[0];
         }).catch((error) => {
             console.log(error);

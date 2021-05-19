@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardBody, Col,
@@ -7,6 +7,7 @@ import ReactTableBase from '@/shared/components/table/ReactTableBase';
 import ReactTableCustomizer from '@/shared/components/table/components/ReactTableCustomizer';
 import { CSVLink } from 'react-csv';
 import FileExcelOutlineIcon from 'mdi-react/FileExcelOutlineIcon';
+import { used } from '@amcharts/amcharts4/.internal/core/utils/Utils';
 
 const reorder = (rows, startIndex, endIndex) => {
   const result = Array.from(rows);
@@ -17,7 +18,7 @@ const reorder = (rows, startIndex, endIndex) => {
 };
 
 const DataReactTable = ({ reactTableData }) => {
-  const [rows, setData] = useState(reactTableData.tableRowsData);
+  const [rows, setData] = useState([]);
   const [isEditable, setIsEditable] = useState(false);
   const [isResizable, setIsResizable] = useState(false);
   const [isSortable, setIsSortable] = useState(false);
@@ -86,6 +87,10 @@ const DataReactTable = ({ reactTableData }) => {
     manualPageSize: [10, 20, 30, 40],
     placeholder: 'Search by First name...',
   };
+
+  useEffect(() => {
+    setData(reactTableData.tableRowsData);
+  }, [reactTableData.tableRowsData]);
 
   return (
     <Col md={12} lg={12}>

@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonToolbar, Modal } from 'reactstrap';
 import classNames from 'classnames';
 import { RTLProps } from '@/shared/prop-types/ReducerProps';
 import { PayPalButton } from 'react-paypal-button-v2';
-
-
+import { updateRemainCreditsActions } from '@/redux/actions/userInfoActions';
+import firebase from 'firebase';
 
 const ModalComponent = ({
   color, btn, title, message, colored, header, rtl, type,
 }) => {
   const [modal, setModal] = useState(false);
   const { price, credits } = useSelector(state => state.credits);
+  const creditsUpdateDispatch = useDispatch();
+
   const toggle = () => {
     setModal(prevState => !prevState);
   };
@@ -73,23 +75,35 @@ const ModalComponent = ({
         </div>
         <div className="modal__body">
           <PayPalButton
-            amount={totalAmount}
-        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-            onSuccess={(details, data) => {
-          alert(`Transaction completed by ${ details.payer.name.given_name}`);
-
-          // OPTIONAL: Call your server to save the transaction
-          return fetch('/paypal-transaction-complete', {
-            method: 'post',
-            body: JSON.stringify({
-              orderID: data.orderID,
-            }),
-          });
-        }}
+            amount={0.01}
+            // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+            onSuccess={async (details, data) => {
+              alert(`Transaction completed by ${ details.payer.name.given_name}`);
+              // OPTIONAL: Call your server to save the transaction              
+              const currentUid = await firebase.auth().currentUser.uid;
+              let currentCredits;
+              const db = firebase.database().ref(`/users/${currentUid}`);  
+              await db
+              .once('value')
+              .then((snapshot) => {
+                currentCredits = snapshot.val().credits;
+              });
+              db.update({
+                credits: (currentCredits + totalCredits),
+              })
+              .then(() => {
+                creditsUpdateDispatch(updateRemainCreditsActions((currentCredits + totalCredits)));
+                return fetch('/paypal-transaction-complete', {
+                    method: 'post',
+                    body: JSON.stringify({
+                      orderID: data.orderID,
+                    }),
+                  });
+                });
+              }}
             onError={(error) => {
-          console.log('------------------------', error);
-        }}
-        
+              console.log('------------------------', error);
+            }}
           />
         </div> 
         <ButtonToolbar className="modal__footer">

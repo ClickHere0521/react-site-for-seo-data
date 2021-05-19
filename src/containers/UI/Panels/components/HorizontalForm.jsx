@@ -10,12 +10,16 @@ import AlertCircleIcon from 'mdi-react/AlertCircleIcon';
 import renderSelectField from '@/shared/components/form/Select';
 import { useSelector, useDispatch } from 'react-redux';
 import { apiOptionActions, apiResultActions } from '@/redux/actions/apiActions';
+import firebase from 'firebase';
+import { updateRemainCreditsActions } from '@/redux/actions/userInfoActions';
 import dataApi from '../../../../utils/api/dataApi';
 
 const HorizontalForm = ({ handleSubmit, reset }) => {
   const { t } = useTranslation('common');
   const apiOptionDispatch = useDispatch();
   const apiResultDispatch = useDispatch();
+  const creditsUpdateDispatch = useDispatch();
+
   const introduction = [
     {
       type: 'google',
@@ -71,16 +75,27 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
   const [keyword, setKeyword] = useState('');
   const { se, setype, device } = useSelector(state => state.api);
   const dataApiProps = useSelector(state => state.api);
-  const handleApiSubmit = async () => {
-    try {
-      const result = await dataApi(dataApiProps);
-      console.log(result);
-    } catch (e) {
-      console.log(e);
-    }
 
-    
-    // apiResultDispatch(apiResultActions(result));
+  const handleResult = (result) => {
+    apiResultDispatch(apiResultActions(result));
+  };
+
+  const handleApiSubmit = async () => {    
+    dataApi(dataApiProps, handleResult);
+
+    const currentUid = await firebase.auth().currentUser.uid;
+    const db = firebase.database().ref(`/users/${currentUid}`);
+    let currentCredits;
+    await db.once('value')
+    .then((snapshot) => {          
+      currentCredits = snapshot.val().credits;
+    });
+    db.update({
+      credits: (currentCredits - 1),
+    })
+    .then(() => {
+      creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 1)));
+    });
   };
 
   useEffect(() => {

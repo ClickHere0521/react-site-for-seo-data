@@ -27,7 +27,7 @@ import { APIOPTIONACTIONS, APIRESULTACTIONS } from '../actions/apiActions';
           default: return state;
         }
       case APIRESULTACTIONS:
-        return { ...state.result, result: action.payload };
+        return { ...state, result: action.payload };
       default:
         return state;
     }

@@ -1,6 +1,7 @@
 import {
     CREDITSACTION,
     USERINFOACTIONS,
+    UPDATEREMAINCREDITS,
   } from '../actions/userInfoActions';
   
   const initialState = {
@@ -25,6 +26,11 @@ import {
           email: action.payload.email, 
           username: action.payload.username,
           password: action.payload.password, 
+        };
+      case UPDATEREMAINCREDITS:
+        return {
+          ...state,
+          remaincredits: action.payload.credits,
         };
       default:
         return state;
