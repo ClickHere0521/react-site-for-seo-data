@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Col, Container, Row } from 'reactstrap';
 import HorizontalForm from './components/HorizontalForm';
 import DataReactTable from './components/DataReactTable';
@@ -8,7 +7,6 @@ import showResults from './Show';
 
 
 const BasicForm = () => {
-  const { t } = useTranslation('common');
   const reactTableData = CreateTableData();
 
   return (

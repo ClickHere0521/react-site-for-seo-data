@@ -1,7 +1,7 @@
 {
   "name": "easydev",
   "version": "3.5.0",
-  "private": true,  
+  "private": true,
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -21,6 +21,7 @@
     "@react-google-maps/api": "^2.0.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "browserslist": "^4.16.6",
     "chart.js": "^2.9.4",
     "classnames": "^2.2.6",
     "customize-cra": "^1.0.0",

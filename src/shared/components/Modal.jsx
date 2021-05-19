@@ -9,7 +9,7 @@ import { updateRemainCreditsActions } from '@/redux/actions/userInfoActions';
 import firebase from 'firebase';
 
 const ModalComponent = ({
-  color, btn, title, message, colored, header, rtl, type,
+  color, btn, title, colored, header, rtl, type,
 }) => {
   const [modal, setModal] = useState(false);
   const { price, credits } = useSelector(state => state.credits);
@@ -117,7 +117,6 @@ const ModalComponent = ({
 
 ModalComponent.propTypes = {
   title: PropTypes.string,
-  message: PropTypes.string,
   color: PropTypes.string.isRequired,
   colored: PropTypes.bool,
   header: PropTypes.bool,
@@ -128,7 +127,6 @@ ModalComponent.propTypes = {
 
 ModalComponent.defaultProps = {
   title: '',
-  message: '',
   colored: false,
   header: false,
   type: '',

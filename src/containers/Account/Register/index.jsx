@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import firebase from 'firebase/app';
 import RegisterForm from '@/shared/components/login_register/LoginRegisterForm';
-import { useResizeColumns } from 'react-table';
 
 const Register = ({ history }) => {
   const [error, setError] = useState('');

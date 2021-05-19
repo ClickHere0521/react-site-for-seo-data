@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-  Card, CardBody, Col, Button,
+  Card, CardBody, Col,
 } from 'reactstrap';
-import MessageTextOutlineIcon from 'mdi-react/MessageTextOutlineIcon';
 import { useSelector } from 'react-redux';
 
 const Ava = `${process.env.PUBLIC_URL}/img/12.png`;

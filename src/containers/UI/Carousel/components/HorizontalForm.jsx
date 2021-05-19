@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import {
   Card, CardBody, Col, Button, ButtonToolbar,
   UncontrolledTooltip,
@@ -10,79 +9,71 @@ import AlertCircleIcon from 'mdi-react/AlertCircleIcon';
 import renderSelectField from '@/shared/components/form/Select';
 
 
-const HorizontalForm = ({ handleSubmit, reset }) => {
-  const { t } = useTranslation('common');
-  const [isPasswordShown, setIsPasswordShown] = useState(false);
+const HorizontalForm = ({ handleSubmit, reset }) => (
+  <Col md={12} lg={12}>
+    <Card>
+      <CardBody>
+        <div className="card__title">
+          <h5 className="bold-text">Intoduction</h5>
+          <h5 className="subhead">Search Volume is a Google Ads metric that shows how many people are searching for a specific query. 
+            However, throughout the years, it grew far beyond a simple PPC indicator, becoming a cornerstone of any marketing strategy. 
+            Using DataForSEO Google Search Volume API you can provide your users with important insights into the popularity of their keywords.
+          </h5>
+        </div>
 
-  const showPassword = () => {
-    setIsPasswordShown(!isPasswordShown);
-  };
-
-  return (
-    <Col md={12} lg={12}>
-      <Card>
-        <CardBody>
-          <div className="card__title">
-            <h5 className="bold-text">Intoduction</h5>
-            <h5 className="subhead">Search Volume is a Google Ads metric that shows how many people are searching for a specific query. 
-              However, throughout the years, it grew far beyond a simple PPC indicator, becoming a cornerstone of any marketing strategy. 
-              Using DataForSEO Google Search Volume API you can provide your users with important insights into the popularity of their keywords.
-            </h5>
-          </div>
-
-          <form className="form form--horizontal" onSubmit={handleSubmit}>
-            <div className="form__form-group">
-              <span className="form__form-group-label">SE:</span>
-              <div className="form__form-group-field">
-                <Field
-                  name="se"
-                  component={renderSelectField}
-                  options={[
+        <form className="form form--horizontal" onSubmit={handleSubmit}>
+          <div className="form__form-group">
+            <span className="form__form-group-label">SE:</span>
+            <div className="form__form-group-field">
+              <Field
+                name="se"
+                component={renderSelectField}
+                options={[
                     { value: 'Google', label: 'Google' },
                     { value: 'Bing', label: 'Bing' },
                     { value: 'Yahoo', label: 'Yahoo' },
                     { value: 'Yandex', label: 'Yandex' },
                   ]}
-                />
-              </div>
+              />
             </div>
-            <div className="form__form-group">
-              <span className="form__form-group-label">SE Types:</span>
-              <div className="form__form-group-field">
-                <Field
-                  name="setype"
-                  component={renderSelectField}
-                  options={[
+          </div>
+          <div className="form__form-group">
+            <span className="form__form-group-label">SE Types:</span>
+            <div className="form__form-group-field">
+              <Field
+                name="setype"
+                component={renderSelectField}
+                options={[
                     { value: 'OrganicSearch', label: 'Organic Search' },
                     { value: 'Maps', label: 'Maps' },
                     { value: 'News', label: 'News' },
                     { value: 'Images', label: 'Images' },
                   ]}
-                />
-              </div>
+              />
             </div>
-            <div className="form__form-group">
-              <span className="form__form-group-label">Location:</span>
-              <div className="form__form-group-field">
-                <Field
-                  name="location"
-                  component={renderSelectField}
-                  options={[
+          </div>
+          <div className="form__form-group">
+            <span className="form__form-group-label">Location:</span>
+            <div className="form__form-group-field">
+              <Field
+                name="location"
+                component={renderSelectField}
+                options={[
                     { value: '', label: 'Google' },
                     { value: 'Bing', label: 'Bing' },
                     { value: 'Yahoo', label: 'Yahoo' },
                     { value: 'Yandex', label: 'Yandex' },
                   ]}
-                />
-              </div>
+              />
             </div>
-            <div className="form__form-group">
-              <span className="form__form-group-label">Language:</span>
-              <div className="form__form-group-field">
-                <Field
-                  name="language"
-                  component={renderSelectField}
-                  options={[
+          </div>
+          <div className="form__form-group">
+            <span className="form__form-group-label">Language:</span>
+            <div className="form__form-group-field">
+              <Field
+                name="language"
+                component={renderSelectField}
+                options={[
                     { value: 'Afrikaans', label: 'Afrikaans' },
                     { value: 'Akan', label: 'Akan' },
                     { value: 'Albanian', label: 'Albanian' },
@@ -208,61 +199,60 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                     { value: 'Yoruba', label: 'Yoruba' },
                     { value: 'Zulu', label: 'Zulu' },
                   ]}
-                />
-              </div>
+              />
             </div>
-            <div className="form__form-group">
-              <span className="form__form-group-label">Device:</span>
-              <div className="form__form-group-field">
-                <Field
-                  name="device"
-                  component={renderSelectField}
-                  value="Desktop"
-                  options={[
+          </div>
+          <div className="form__form-group">
+            <span className="form__form-group-label">Device:</span>
+            <div className="form__form-group-field">
+              <Field
+                name="device"
+                component={renderSelectField}
+                value="Desktop"
+                options={[
                     { value: 'Desktop', label: 'Desktop' },
                     { value: 'Mobile', label: 'Mobile' },
                   ]}
-                />
-              </div>
+              />
             </div>
-            <div className="form__form-group">
-              <span className="form__form-group-label">Search engine parameters:</span>
-              <div className="form__form-group-field">
-                <Field
-                  name="sep"
-                  component="input"
-                  type="text"
-                  placeholder="example: &tbs=qdrh"
-                />
-              </div>
+          </div>
+          <div className="form__form-group">
+            <span className="form__form-group-label">Search engine parameters:</span>
+            <div className="form__form-group-field">
+              <Field
+                name="sep"
+                component="input"
+                type="text"
+                placeholder="example: &tbs=qdrh"
+              />
             </div>
-            <div className="form__form-group">
-              <span className="form__form-group-label">Keyword:<AlertCircleIcon size="18" id="keywordTooltip" /></span>
-              <div className="form__form-group-field">
-                <Field
-                  name="keyword"
-                  component="input"
-                  type="text"
+          </div>
+          <div className="form__form-group">
+            <span className="form__form-group-label">Keyword:<AlertCircleIcon size="18" id="keywordTooltip" /></span>
+            <div className="form__form-group-field">
+              <Field
+                name="keyword"
+                component="input"
+                type="text"
                   // value="weather forecast"
-                  placeholder="weather forecast"
-                />
-                <UncontrolledTooltip placement="bottom" target="keywordTooltip">
-                  You can enter up to 700 symbols in the keyword field. If you use a search operator, the charge per task will be muliplied by 5
-                </UncontrolledTooltip>
-              </div>
+                placeholder="weather forecast"
+              />
+              <UncontrolledTooltip placement="bottom" target="keywordTooltip">
+                You can enter up to 700 symbols in the keyword field. If you use a search operator, the charge per task will be muliplied by 5
+              </UncontrolledTooltip>
             </div>
-            <ButtonToolbar className="form__button-toolbar">
-              <Button color="primary" type="submit">Submit</Button>
-              <Button type="button" onClick={reset}>
-                Cancel
-              </Button>
-            </ButtonToolbar>
-          </form>
-        </CardBody>
-      </Card>
-    </Col>
+          </div>
+          <ButtonToolbar className="form__button-toolbar">
+            <Button color="primary" type="submit">Submit</Button>
+            <Button type="button" onClick={reset}>
+              Cancel
+            </Button>
+          </ButtonToolbar>
+        </form>
+      </CardBody>
+    </Card>
+  </Col>
   );
-};
 
 HorizontalForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,

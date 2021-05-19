@@ -1,5 +1,4 @@
-import { InfoBox } from '@react-google-maps/api';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 const CreateTableData = () => {
@@ -52,11 +51,10 @@ const CreateTableData = () => {
     [],
   );
 
-  const getRandomDate = (start, end) => new Date(start.getTime() + (Math.random() * (end.getTime()
-    - start.getTime()))).toLocaleDateString();
+  // const getRandomDate = (start, end) => new Date(start.getTime() + (Math.random() * (end.getTime()
+  //   - start.getTime()))).toLocaleDateString();
 
   const data = [];
-  const dataTemp = [];
   const rows = () => {
     if (result.items) {
       result.items.some((value, index) => {

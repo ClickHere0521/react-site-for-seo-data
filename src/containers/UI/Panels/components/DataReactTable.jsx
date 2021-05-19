@@ -7,7 +7,6 @@ import ReactTableBase from '@/shared/components/table/ReactTableBase';
 import ReactTableCustomizer from '@/shared/components/table/components/ReactTableCustomizer';
 import { CSVLink } from 'react-csv';
 import FileExcelOutlineIcon from 'mdi-react/FileExcelOutlineIcon';
-import { used } from '@amcharts/amcharts4/.internal/core/utils/Utils';
 
 const reorder = (rows, startIndex, endIndex) => {
   const result = Array.from(rows);

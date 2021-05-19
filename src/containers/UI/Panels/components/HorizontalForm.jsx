@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import {
   Card, CardBody, Col, Button, ButtonToolbar,
   UncontrolledTooltip,
@@ -15,7 +14,6 @@ import { updateRemainCreditsActions } from '@/redux/actions/userInfoActions';
 import dataApi from '../../../../utils/api/dataApi';
 
 const HorizontalForm = ({ handleSubmit, reset }) => {
-  const { t } = useTranslation('common');
   const apiOptionDispatch = useDispatch();
   const apiResultDispatch = useDispatch();
   const creditsUpdateDispatch = useDispatch();
