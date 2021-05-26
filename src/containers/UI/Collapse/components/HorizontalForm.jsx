@@ -17,7 +17,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => (
           <h5 className="bold-text">Intoduction</h5>
           <h5 className="subhead">Search Volume is a Google Ads metric that shows how many people are searching for a specific query. 
             However, throughout the years, it grew far beyond a simple PPC indicator, becoming a cornerstone of any marketing strategy. 
-            Using DataForSEO Google Search Volume API you can provide your users with important insights into the popularity of their keywords.
+            Using SEMSEARCHES Google Search Volume API you can provide your users with important insights into the popularity of their keywords.
           </h5>
         </div>
 

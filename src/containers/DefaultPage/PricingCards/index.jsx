@@ -2,11 +2,8 @@ import React from 'react';
 import {
  Col, Container, Row, Card, CardBody, 
 } from 'reactstrap';
-import CardBasic from './components/CardBasic';
-import CardSpecial from './components/CardSpecial';
-import CardPro from './components/CardPro';
-import CardPremium from './components/CardPremium';
 import CardSlider from './components/CardSlider';
+import BoxedCollapseFullWidth from './components/BoxedCollapseFullWidth';
 
 const PricingCards = () => (
   <Container>
@@ -25,15 +22,18 @@ const PricingCards = () => (
           </CardBody>
         </Card>
       </Col>
-
     </Row>
     <Row dir="ltr">
-      <CardBasic />
-      <CardSpecial />
-      <CardPro />
-      <CardPremium />
+      <Col md={12} lg={12} xs={12}>
+        <Card>
+          <CardBody className="pricing-card pricing-card--slider">
+            <BoxedCollapseFullWidth />
+          </CardBody>
+        </Card>
+      </Col>
     </Row>
   </Container>
 );
 
 export default PricingCards;
+

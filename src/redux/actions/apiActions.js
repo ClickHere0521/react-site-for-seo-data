@@ -9,7 +9,6 @@ export function apiOptionActions(type, value) {
 }
 
 export function apiResultActions(result) {
-  console.log(result);
   return {
     type: APIRESULTACTIONS,
     payload: result,

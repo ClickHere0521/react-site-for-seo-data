@@ -5,7 +5,7 @@ import { UserProps, AuthOProps } from '@/shared/prop-types/ReducerProps';
 import { hookAuth0 } from '@/shared/components/auth/withAuth0';
 import TopbarMenuLink from './TopbarMenuLink';
 
-const Ava = `${process.env.PUBLIC_URL}/img/ava.png`;
+const Ava = `${process.env.PUBLIC_URL}/img/userDefault.png`;
 
 const TopbarProfile = ({ auth0, user }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);

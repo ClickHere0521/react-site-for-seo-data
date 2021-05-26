@@ -5,6 +5,7 @@ import {
   BarChart, Bar, Cell, ResponsiveContainer,
 } from 'recharts';
 import TrendingUpIcon from 'mdi-react/TrendingUpIcon';
+import { useSelector } from 'react-redux';
 
 const data = [
   { id: 0, name: 'Page A', amt: 2400 },
@@ -23,11 +24,12 @@ const TotalCredits = () => {
   const { t } = useTranslation('common');
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = data[activeIndex];
+  const credits = useSelector(state => state.credits.remaincredits);
 
-  const handleClick = (item) => {
-    const index = data.indexOf(item.payload);
-    setActiveIndex(index);
-  };
+  // const handleClick = (item) => {
+  //   const index = data.indexOf(item.payload);
+  //   setActiveIndex(index);
+  // };
 
   return (
     <Col md={12} xl={3} lg={6} xs={12}>
@@ -39,12 +41,14 @@ const TotalCredits = () => {
           <div className="dashboard__total">
             <TrendingUpIcon className="dashboard__trend-icon" />
             <p className="dashboard__total-stat">
-              {activeItem.amt}
+              {/* {activeItem.amt} */}
+              {credits}
             </p>
             <div className="dashboard__chart-container">
               <ResponsiveContainer height={50}>
                 <BarChart data={data}>
-                  <Bar dataKey="amt" onClick={handleClick}>
+                  {/* <Bar dataKey="amt" onClick={handleClick}> */}
+                  <Bar dataKey="amt">
                     {data.map((entry, index) => (
                       <Cell
                         key={entry.id}

@@ -21,11 +21,13 @@ const SidebarContent = ({
         />
       </ul>
       <ul className="sidebar__block">
-        <SidebarCategory title="Usage" icon="diamond" sidebarCollapse={sidebarCollapse}>
+        <SidebarCategory title="Services" icon="diamond" sidebarCollapse={sidebarCollapse}>
           <SidebarLink title="SERP" route="/ui/panels" onClick={hideSidebar} />
-          <SidebarLink title="Keywords Data" route="/ui/buttons" onClick={hideSidebar} />
-          <SidebarLink title="Business Data" route="/ui/carousel" onClick={hideSidebar} />
-          <SidebarLink title="OnPage" route="/ui/collapse" onClick={hideSidebar} />
+          <SidebarLink title="Amazon API" route="/ui/buttons" onClick={hideSidebar} />
+          <SidebarLink title="Google Shopping" route="/ui/googleShopping" onClick={hideSidebar} />
+          <SidebarLink title="Keyword Research" route="/ui/keyword" onClick={hideSidebar} />
+          <SidebarLink title="Google Ads" route="/ui/googleAds" onClick={hideSidebar} />
+          <SidebarLink title="Google Trends" route="/ui/googleTrends" onClick={hideSidebar} />
         </SidebarCategory>
       </ul>      
       <ul className="sidebar__block">

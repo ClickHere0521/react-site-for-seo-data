@@ -6,9 +6,9 @@ const TopbarAddFunds = () => (
   <div className="topbar__collapse">
     <Link className="topbar__btn topbar__btn--new" type="button" to="/default_pages/pricing_cards">
       <MoneyIcon />
-      <div className="topbar__btn-new-label">
+      {/* <div className="topbar__btn-new-label">
         <div />
-      </div>
+      </div> */}
       <p className="topbar__avatar-name"> Add Funds </p>        
     </Link>
   </div>

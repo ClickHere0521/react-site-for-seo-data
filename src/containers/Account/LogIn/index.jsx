@@ -28,13 +28,19 @@ const LogIn = (props) => {
     try {
       const provider = new AbstractProvider(providerName);
       const res = await provider.login(userProps);    
-      const db = firebase.database().ref(`/users/${res.user.uid}`);             
+      const db = firebase.database().ref(`/users/${res.user.uid}`);  
+      let userInfo;           
       login(provider.getUserObjectByProvider(res));
       db.once('value')
         .then((snapshot) => {          
-          userInfoDispatch(userInfoActions(snapshot.val()));
+          userInfo = snapshot.val();
+          userInfo.visits += 1;
+          console.log(userInfo);
+          userInfoDispatch(userInfoActions(userInfo));
+          db.update({
+            visits: userInfo.visits,
+          });
         });
-
       history.push('/api_dashboard');
     } catch (e) {
       setError(e.message);

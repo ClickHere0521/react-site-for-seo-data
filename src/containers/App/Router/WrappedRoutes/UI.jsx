@@ -2,6 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Alerts from '../../../UI/Alerts/index';
 import Buttons from '../../../UI/Buttons/index';
+import GoogleShopping from '../../../UI/GoogleShopping/index';
+import Keyword from '../../../UI/Keyword/index';
+import GoogleAds from '../../../UI/GoogleAds/index';
+import GoogleTrends from '../../../UI/GoogleTrends/index';
 import Carousel from '../../../UI/Carousel/index';
 import Collapse from '../../../UI/Collapse/index';
 import Grids from '../../../UI/Grids';
@@ -19,6 +23,10 @@ export default () => (
   <Switch>
     <Route path="/ui/alerts" component={Alerts} />
     <Route path="/ui/buttons" component={Buttons} />
+    <Route path="/ui/googleShopping" component={GoogleShopping} />
+    <Route path="/ui/keyword" component={Keyword} />
+    <Route path="/ui/googleAds" component={GoogleAds} />
+    <Route path="/ui/googleTrends" component={GoogleTrends} />
     <Route path="/ui/carousel" component={Carousel} />
     <Route path="/ui/collapse" component={Collapse} />
     <Route path="/ui/grids" component={Grids} />

@@ -90,7 +90,7 @@ const Layout = ({
 
   return (
     <div className={layoutClass}>
-      <Customizer
+      {/* <Customizer
         customizer={customizer}
         sidebar={sidebar}
         theme={theme}
@@ -107,7 +107,7 @@ const Layout = ({
         changeRoundBordersOff={changeRoundBordersOff}
         changeBlocksShadowsOn={changeBlocksShadowsOn}
         changeBlocksShadowsOff={changeBlocksShadowsOff}
-      />
+      /> */}
       {customizer.topNavigation
         ? (
           <TopbarWithNavigation

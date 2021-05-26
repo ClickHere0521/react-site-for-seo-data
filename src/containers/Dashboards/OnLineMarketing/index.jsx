@@ -35,13 +35,13 @@ const OnLineMarketingDashboard = ({ rtl }) => {
       </Row>
       <Row>
         <ABTestingAnalytics dir={rtl.direction} />
-        <BounceRateArea dir={rtl.direction} />
+        {/* <BounceRateArea dir={rtl.direction} />
         <VisitorsSessions dir={rtl.direction} />
         <SalesStatistic />
         <BudgetStatistic />
         <AudienceByCountry />
         <BestSellingRegions />
-        <GoalsCompletion />
+        <GoalsCompletion /> */}
       </Row>
     </Container>
   );

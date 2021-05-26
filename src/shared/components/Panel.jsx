@@ -62,14 +62,14 @@ const AlertComponent = ({
               >
                 <AutorenewIcon />
               </button>
-              <button
+              {/* <button
                 className="panel__btn"
                 aria-label="panel__btn"
                 type="button"
                 onClick={onDismiss}
               >
                 <CloseIcon />
-              </button>
+              </button> */}
             </div>
             <div className="panel__title">
               <h5 className="bold-text">

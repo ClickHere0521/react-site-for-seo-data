@@ -1,23 +1,32 @@
 import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import HorizontalForm from './components/HorizontalForm';
+import DataReactTable from './components/DataReactTable';
+import CreateTableData from './CreateData';
 import showResults from './Show';
 
-const BasicForm = () => (
-  <Container>
-    <Row>
-      <Col md={12}>
-        <h3 className="page-title">KEYWORDS DATA EXPLORER</h3>
-        <h3 className="page-subhead subhead">Keyword Data Explorer will help you appreciate the scale of information that DataForSEO Keyword Data API provides. 
-          To get a full understanding of the fields used in the request and response snippets
-        </h3>
-      </Col>
-    </Row>
-    <Row>
-      <HorizontalForm onSubmit={showResults} />
-    </Row>
+const BasicForm = () => {
+  const reactTableData = CreateTableData();
 
-  </Container>
+  return (
+    <Container>
+      <Row>
+        <Col md={12}>
+          <h3 className="page-title">AMAZON MERCHANT API</h3>
+          <h3 className="page-subhead subhead">Using Amazon Merchant API you can get results from Amazon product listings and related data. 
+            The returned results are specific to the specified keyword, language and location parameters. We emulate set location with 
+            the highest accuracy so that the results you receive will match the actual search results for the specified parameters at the time of task setting. 
+          </h3>
+        </Col>
+      </Row>
+      <Row>
+        <HorizontalForm onSubmit={showResults} />
+      </Row>
+      <Row>
+        <DataReactTable reactTableData={reactTableData} />
+      </Row>
+    </Container>
   );
+};
 
 export default BasicForm;

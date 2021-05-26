@@ -29,10 +29,10 @@ const Topbar = ({
       <div className="topbar__right-over">
         {/* <TopbarNotification />
         <TopbarMail /> */}
-        <TopbarAddFunds new />
+        <TopbarAddFunds />
         <TopbarLeftCredits />
         <TopbarProfile user={user} />
-        <TopbarLanguage />
+        {/* <TopbarLanguage /> */}
       </div>
     </div>
   </div>

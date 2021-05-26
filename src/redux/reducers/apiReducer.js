@@ -1,15 +1,21 @@
 import { APIOPTIONACTIONS, APIRESULTACTIONS } from '../actions/apiActions';
   
   const initialState = {
-    se: 'google',
-    setype: 'organic',
+    se: '',
+    setype: '',
     location: 2752,
-    language: 'sv',
-    device: 'desktop',
-    os: 'windows',
+    language: '',
+    device: '',
+    os: '',
     sep: '',
-    keyword: 'weather forecast',
+    keyword: '',
     result: {},
+    includeSerp: false,
+    tag: '',
+    interval: {
+      from: '',
+      to: '',
+    },
   };
   
   const creditsReducer = (state = initialState, action) => {
@@ -23,7 +29,11 @@ import { APIOPTIONACTIONS, APIRESULTACTIONS } from '../actions/apiActions';
           case 'device': return { ...state, device: action.payload.value };
           case 'os': return { ...state, os: action.payload.value };
           case 'sep': return { ...state, sep: action.payload.value };
+          case 'priority': return { ...state, priority: action.payload.value };
           case 'keyword': return { ...state, keyword: action.payload.value };
+          case 'includeSerp': return { ...state, includeSerp: action.payload.value };
+          case 'tag': return { ...state, tag: action.payload.value };
+          case 'interval': return { ...state, interval: action.payload.value };
           default: return state;
         }
       case APIRESULTACTIONS:

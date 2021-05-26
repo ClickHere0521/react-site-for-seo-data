@@ -3,12 +3,16 @@ import DatePicker from 'react-datepicker';
 import { isMobileOnly } from 'react-device-detect';
 import MinusIcon from 'mdi-react/MinusIcon';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { apiOptionActions } from '@/redux/actions/apiActions';
 
 const IntervalDatePickerField = ({ onChange }) => {
   const [state, setState] = useState({
     startDate: null,
     endDate: null,
   });
+
+  const apiOptionDispatch = useDispatch();
 
   const handleChange = ({ startDate, endDate }) => {
     const { startDate: stateStartDate, endDate: stateEndDate } = state;
@@ -18,6 +22,12 @@ const IntervalDatePickerField = ({ onChange }) => {
 
     setState({ startDate: startDateCopy, endDate: endDateCopy });
     onChange({ start: startDateCopy, end: endDateCopy });
+    if (startDateCopy && endDateCopy) {
+      apiOptionDispatch(apiOptionActions('interval', { 
+        from: `${startDateCopy.getYear() + 1900}-${startDateCopy.getMonth() + 1}-${startDateCopy.getDate()}`, 
+        to: `${endDateCopy.getYear() + 1900}-${endDateCopy.getMonth() + 1}-${endDateCopy.getDate()}`, 
+      })); 
+    }
   };
 
   const handleChangeStart = startDate => handleChange({ startDate });

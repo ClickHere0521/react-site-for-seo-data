@@ -18,6 +18,7 @@ const Register = ({ history }) => {
           email: user.email,
           password: user.password,
           username: user.username,
+          visits: 0,
         });        
         history.push('/log_in');
       })

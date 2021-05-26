@@ -28,13 +28,13 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
     {
       type: 'bing',
       text: `Bing has long been branded a “decision engine,” aiming to present results with more real-life context, as opposed to Google’s approach 
-      of simply finding text on a page. DataForSEO’s Bing Organic Search API gives you an opportunity to leverage its power and build a true decision tool for this decision engine. 
+      of simply finding text on a page. SEMSEARCHES’s Bing Organic Search API gives you an opportunity to leverage its power and build a true decision tool for this decision engine. 
       Type in a keyword, set the necessary parameters, and you’re ready to go.`,
     },
     {
       type: 'yahoo',
       text: `Although it’s no secret that Yahoo search is powered by Bing, it’s still the third most popular search engine in the US and is ranked 19th on our Top-1000 most 
-      popular websites list. DataForSEO Yahoo Organic Search API will help you understand why it’s the case and capitalize on its marketing potential.`,
+      popular websites list. SEMSEARCHES Yahoo Organic Search API will help you understand why it’s the case and capitalize on its marketing potential.`,
     },
     {
       type: 'yandex',
@@ -43,7 +43,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
     },
     {
       type: 'map',
-      text: `Google Maps is not only the most popular navigation app on this planet, but it’s also one of the most versatile engines for local searches. DataForSEO API gives an opportunity to 
+      text: `Google Maps is not only the most popular navigation app on this planet, but it’s also one of the most versatile engines for local searches. SEMSEARCHES API gives an opportunity to 
       exploit its SEO potential to the fullest, allowing you to get accurate search results for the searcher’s precise location. Only some of its features are available here`,
     },
     {
@@ -54,7 +54,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
     {
       type: 'images',
       text: `Need to check rankings in Google Images search results? Or want to scrape URLs of images relevant to a specific query? There are numerous use cases for Google Images - and nothing that 
-      DataForSEO Google Images API wouldn’t solve. Here you can test only a part of its functionality, but we have much more to offer.`,
+      SEMSEARCHES Google Images API wouldn’t solve. Here you can test only a part of its functionality, but we have much more to offer.`,
     },
   ];
 
@@ -197,7 +197,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   name="se"
                   component={renderSelectField}
                   selectType="se"
-                  placeholder="Google"
+                  // placeholder="Google"
                   options={[
                     { value: 'google', label: 'Google' },
                     { value: 'bing', label: 'Bing' },
@@ -214,7 +214,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   name="setype"
                   component={renderSelectField}
                   selectType="setype"
-                  placeholder="Organic Search"
+                  // placeholder="Organic Search"
                   options={setypeOptions}
                 />
               </div>
@@ -226,7 +226,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   name="location"
                   component={renderSelectField}
                   value="Sweden"
-                  placeholder="Sweden"
+                  // placeholder="Sweden"
                   selectType="location"
                   options={[
                     { value: '2004', label: 'Afghanistan' },
@@ -469,7 +469,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   name="language"
                   component={renderSelectField}
                   value="English"
-                  placeholder="English"
+                  // placeholder="English"
                   selectType="language"
                   options={[
                     { value: 'af', label: 'Afrikaans' },
@@ -607,7 +607,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   name="device"
                   component={renderSelectField}
                   value="Desktop"
-                  placeholder="Desktop"
+                  // placeholder="Desktop"
                   selectType="device"
                   options={[
                     { value: 'desktop', label: 'Desktop' },
@@ -622,7 +622,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                 <Field
                   name="os"
                   component={renderSelectField}
-                  placeholder="Windows"
+                  // placeholder="Windows"
                   selectType="os"
                   options={ostypeOptions}
                 />
@@ -635,7 +635,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   name="sep"
                   component="input"
                   type="text"
-                  placeholder="example: &tbs=qdr:h"
+                  // placeholder="example: &tbs=qdr:h"
                   selectType="sep"
                   onChange={(e) => {
                     setSep(e.target.value);
@@ -653,7 +653,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                   component="input"
                   type="text"
                   selectType="keyword"
-                  placeholder="weather forecast"
+                  // placeholder="weather forecast"
                   onChange={(e) => {
                     setKeyword(e.target.value);
                     apiOptionDispatch(apiOptionActions('keyword', e.target.value));

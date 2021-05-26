@@ -8,21 +8,35 @@ import {
 import Panel from '@/shared/components/Panel';
 import getTooltipStyles from '@/shared/helpers';
 
-const data = [{ name: 'Mon', a: 590, b: 1400 },
-  { name: 'Tue', a: 868, b: 1506 },
-  { name: 'Wed', a: 1397, b: 989 },
-  { name: 'Thu', a: 1480, b: 1228 },
-  { name: 'Fri', a: 1520, b: 1100 },
-  { name: 'Sat', a: 1520, b: 1100 },
-  { name: 'Sun', a: 1400, b: 1700 }];
+const data = [{
+ name: 'Mon', a: 590, b: 1400, c: 1400, 
+},
+  {
+ name: 'Tue', a: 868, b: 1506, c: 1400, 
+},
+  {
+ name: 'Wed', a: 1397, b: 989, c: 1400, 
+},
+  {
+ name: 'Thu', a: 1480, b: 1228, c: 1400, 
+},
+  {
+ name: 'Fri', a: 1520, b: 1100, c: 1400, 
+},
+  {
+ name: 'Sat', a: 1520, b: 1100, c: 1400, 
+},
+  {
+ name: 'Sun', a: 1400, b: 1700, c: 1400, 
+}];
 
 const ABTestingAnalytics = ({ dir, themeName }) => {
   const { t } = useTranslation('common');
 
   return (
-    <Panel md={12} lg={12} xl={12} title={t('api_dashboard.ab_testing')}>
+    <Panel md={12} lg={12} xl={12} title={t('api_dashboard.services_usage')}>
       <div dir="ltr">
-        <ResponsiveContainer height={250} className="dashboard__area">
+        <ResponsiveContainer height={450} className="dashboard__area">
           <AreaChart data={data} margin={{ top: 20, left: -15, bottom: 20 }}>
             <XAxis dataKey="name" tickLine={false} reversed={dir === 'rtl'} />
             <YAxis tickLine={false} orientation={dir === 'rtl' ? 'right' : 'left'} />
@@ -31,6 +45,7 @@ const ABTestingAnalytics = ({ dir, themeName }) => {
             <CartesianGrid />
             <Area name="Site A" type="monotone" dataKey="a" fill="#4ce1b6" stroke="#4ce1b6" fillOpacity={0.2} />
             <Area name="Site B" type="monotone" dataKey="b" fill="#70bbfd" stroke="#70bbfd" fillOpacity={0.2} />
+            <Area name="Site C" type="monotone" dataKey="c" fill="#70bbfd" stroke="#70bbfd" fillOpacity={0.2} />
           </AreaChart>
         </ResponsiveContainer>
       </div>
