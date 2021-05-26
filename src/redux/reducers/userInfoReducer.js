@@ -2,6 +2,9 @@ import {
     CREDITSACTION,
     USERINFOACTIONS,
     UPDATEREMAINCREDITS,
+    UPDATEFETCHEDDATA,
+    UPDATEACTIVITY,
+    UPDATEFUNDS,
   } from '../actions/userInfoActions';
   
   const initialState = {
@@ -15,6 +18,7 @@ import {
     visits: 0,
     totalFunds: 0,
     fetchedData: 0,
+    activity: [],
   };
   
   const userInfoReducer = (state = initialState, action) => {
@@ -37,6 +41,21 @@ import {
         return {
           ...state,
           remaincredits: action.payload.credits,
+        };
+      case UPDATEFETCHEDDATA:
+        return {
+          ...state,
+          fetchedData: action.payload.fetchedData,
+        };
+      case UPDATEACTIVITY:
+        return {
+          ...state,
+          activity: action.payload.activity,
+        };
+      case UPDATEFUNDS:
+        return {
+          ...state,
+          totalFunds: action.payload.funds,
         };
       default:
         return state;

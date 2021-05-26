@@ -5,7 +5,7 @@ import { Button, ButtonToolbar, Modal } from 'reactstrap';
 import classNames from 'classnames';
 import { RTLProps } from '@/shared/prop-types/ReducerProps';
 import { PayPalButton } from 'react-paypal-button-v2';
-import { updateRemainCreditsActions } from '@/redux/actions/userInfoActions';
+import { updateRemainCreditsActions, updateFundsActions } from '@/redux/actions/userInfoActions';
 import firebase from 'firebase';
 
 const ModalComponent = ({
@@ -14,6 +14,7 @@ const ModalComponent = ({
   const [modal, setModal] = useState(false);
   const { price, credits } = useSelector(state => state.credits);
   const creditsUpdateDispatch = useDispatch();
+  const fundsUpdateDispatch = useDispatch();
 
   const toggle = () => {
     setModal(prevState => !prevState);
@@ -75,24 +76,28 @@ const ModalComponent = ({
         </div>
         <div className="modal__body">
           <PayPalButton
-            amount={0.01}
+            amount={totalAmount}
             // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
             onSuccess={async (details, data) => {
               alert(`Transaction completed by ${ details.payer.name.given_name}`);
               // OPTIONAL: Call your server to save the transaction              
               const currentUid = await firebase.auth().currentUser.uid;
               let currentCredits;
+              let totalFunds;
               const db = firebase.database().ref(`/users/${currentUid}`);  
               await db
               .once('value')
               .then((snapshot) => {
                 currentCredits = snapshot.val().credits;
+                totalFunds = snapshot.val().totalFunds;
               });
               db.update({
                 credits: (currentCredits + totalCredits),
+                totalFunds: (totalFunds + totalAmount), 
               })
               .then(() => {
                 creditsUpdateDispatch(updateRemainCreditsActions((currentCredits + totalCredits)));
+                fundsUpdateDispatch(updateFundsActions((totalFunds + totalAmount)));
                 return fetch('/paypal-transaction-complete', {
                     method: 'post',
                     body: JSON.stringify({

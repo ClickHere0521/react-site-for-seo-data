@@ -8,12 +8,13 @@ import { withRouter } from 'react-router';
 import { connect, useDispatch } from 'react-redux';
 import { auth } from '@/redux/actions/authActions';
 import firebase from 'firebase';
-import { userInfoActions } from '@/redux/actions/userInfoActions';
+import { userInfoActions, updateActivityActions } from '@/redux/actions/userInfoActions';
 
 const LogIn = (props) => {
   const [error, setError] = useState('');
   const { history, auth: login } = props;
   const userInfoDispatch = useDispatch();
+  const activityUpdateDispatch = useDispatch();
 
   const {
      loading,
@@ -26,19 +27,53 @@ const LogIn = (props) => {
   const onLogin = providerName => async (userProps) => {
     setError('');    
     try {
+      const today = new Date();
+      const todayDate = [];
       const provider = new AbstractProvider(providerName);
       const res = await provider.login(userProps);    
       const db = firebase.database().ref(`/users/${res.user.uid}`);  
-      let userInfo;           
+      let currentActivity;
+      let userInfo;       
+      let length = 0;
+      const filteredActivity = [];
       login(provider.getUserObjectByProvider(res));
       db.once('value')
         .then((snapshot) => {          
           userInfo = snapshot.val();
           userInfo.visits += 1;
-          console.log(userInfo);
           userInfoDispatch(userInfoActions(userInfo));
           db.update({
             visits: userInfo.visits,
+          });
+          firebase.firestore().collection('Activity').doc(res.user.uid).get()
+          .then((querySnapShot) => {
+              currentActivity = querySnapShot.data().Activities;
+              for (let i = 0; i < 7; i += 1) {
+                todayDate[i] = `${today.getFullYear() }-${ today.getMonth() + 1 }-${ today.getDate() - i}`;
+              }
+              for (let i = 0; i < 7; i += 1) {
+                length = filteredActivity.length;
+                currentActivity.forEach((val) => {
+                  if (val.date === todayDate[i]) {
+                    filteredActivity.push({
+                      date: todayDate[i],
+                      fetchedData: val.fetchedData,
+                    });
+                  }
+                });
+                if (length === filteredActivity.length) {
+                  filteredActivity.push({
+                    date: todayDate[i],
+                    fetchedData: 0,
+                  });
+                }
+              }
+              const sortArray = [...filteredActivity].sort((a, b) => {
+                if (a.date < b.date) return -1;
+                if (a.date > b.date) return 1;
+                return 0;
+              });
+              activityUpdateDispatch(updateActivityActions(sortArray));
           });
         });
       history.push('/api_dashboard');

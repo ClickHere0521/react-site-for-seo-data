@@ -4,11 +4,11 @@ import {
 } from 'reactstrap';
 import { useSelector } from 'react-redux';
 
-const Ava = `${process.env.PUBLIC_URL}/img/12.png`;
+const Ava = `${process.env.PUBLIC_URL}/img/userDefault.png`;
 
 const ProfileMain = () => {
   const {
- uid, email, password, remaincredits, username, 
+ uid, email, password, remaincredits, username, visits, totalFunds,
 } = useSelector(state => state.credits);
   console.log(`userinfo${uid}${email}${password}${remaincredits}${username}`);
   return (
@@ -30,16 +30,16 @@ const ProfileMain = () => {
           </div>
           <div className="profile__stats">
             <div className="profile__stat">
-              <p className="profile__stat-number">05</p>
+              <p className="profile__stat-number">{visits}</p>
               <p className="profile__stat-title">Visits</p>
             </div>
             <div className="profile__stat">
-              <p className="profile__stat-number">24</p>
-              <p className="profile__stat-title">Tasks</p>
+              <p className="profile__stat-number">{remaincredits}</p>
+              <p className="profile__stat-title">Credits</p>
             </div>
             <div className="profile__stat">
-              <p className="profile__stat-number">12</p>
-              <p className="profile__stat-title">Reports</p>
+              <p className="profile__stat-number">{totalFunds}</p>
+              <p className="profile__stat-title">Funds</p>
             </div>
           </div>
         </CardBody>

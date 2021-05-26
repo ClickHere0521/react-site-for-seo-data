@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardBody, Col, Button, ButtonToolbar,
-  UncontrolledTooltip,
+  UncontrolledTooltip, Modal,
 } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import AlertCircleIcon from 'mdi-react/AlertCircleIcon';
@@ -10,13 +10,15 @@ import renderSelectField from '@/shared/components/form/Select';
 import { useSelector, useDispatch } from 'react-redux';
 import { apiOptionActions, apiResultActions } from '@/redux/actions/apiActions';
 import firebase from 'firebase';
-import { updateRemainCreditsActions } from '@/redux/actions/userInfoActions';
+import { updateRemainCreditsActions, updatefetchedDataActions, updateActivityActions } from '@/redux/actions/userInfoActions';
 import dataApi from '../../../../utils/api/dataApi';
 
 const HorizontalForm = ({ handleSubmit, reset }) => {
   const apiOptionDispatch = useDispatch();
   const apiResultDispatch = useDispatch();
   const creditsUpdateDispatch = useDispatch();
+  const fetchedDataUpdateDispatch = useDispatch();
+  const activityUpdateDispatch = useDispatch();
 
   const introduction = [
     {
@@ -71,29 +73,85 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
   ]);
   const [sep, setSep] = useState('');
   const [keyword, setKeyword] = useState('');
+  const [creditsWarning, setCreditsWarning] = useState(false);
   const { se, setype, device } = useSelector(state => state.api);
   const dataApiProps = useSelector(state => state.api);
 
   const handleResult = (result) => {
     apiResultDispatch(apiResultActions(result));
   };
-
+  const toggle = () => {
+    setCreditsWarning(prevState => !prevState);
+  };
   const handleApiSubmit = async () => {    
-    dataApi(dataApiProps, handleResult);
-
+    const today = new Date();
+    const todayDate = [];
+    let length = 0;
+    let currentCredits; 
+    let currentActivity;
+    const filteredActivity = [];
+    let fetchedData;
     const currentUid = await firebase.auth().currentUser.uid;
     const db = firebase.database().ref(`/users/${currentUid}`);
-    let currentCredits;
-    await db.once('value')
+    // ---------- Check if credits are enough --------- //
+    await db
+    .once('value')
     .then((snapshot) => {          
       currentCredits = snapshot.val().credits;
+      fetchedData = snapshot.val().fetchedData;
     });
-    db.update({
-      credits: (currentCredits - 1),
-    })
-    .then(() => {
-      creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 1)));
-    });
+    if (currentCredits < 10) {
+      setCreditsWarning(true);
+      return null;
+    }
+    // --------- API request ---------- //
+    dataApi(dataApiProps, handleResult);
+    // --------- Update database and store ---------- //
+    firebase.firestore().collection('Activity').doc(currentUid).get()
+      .then((querySnapShot) => {
+          currentActivity = querySnapShot.data().Activities;
+          for (let i = 0; i < 7; i += 1) {
+            todayDate[i] = `${today.getFullYear() }-${ today.getMonth() + 1 }-${ today.getDate() - i}`;
+          }
+          for (let i = 0; i < 7; i += 1) {
+            length = filteredActivity.length;
+            currentActivity.forEach((val) => {
+              if (val.date === todayDate[i]) {
+                filteredActivity.push({
+                  date: todayDate[i],
+                  fetchedData: (val.fetchedData + 1),
+                });
+              }
+            });
+            if (length === filteredActivity.length) {
+              filteredActivity.push({
+                date: todayDate[i],
+                fetchedData: 0,
+              });
+            }
+          }
+          const sortArray = [...filteredActivity].sort((a, b) => {
+            if (a.date < b.date) return -1;
+            if (a.date > b.date) return 1;
+            return 0;
+          });
+          firebase.firestore().collection('Activity').doc(currentUid).update({
+            Activities: sortArray,
+          });
+          activityUpdateDispatch(updateActivityActions(sortArray));
+      });
+    
+
+    db
+      .update({
+        credits: (currentCredits - 1),
+        fetchedData: (fetchedData + 1),
+      })
+      .then(() => {
+        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 1)));
+        fetchedDataUpdateDispatch(updatefetchedDataActions((fetchedData + 1)));
+      });
+    return null;
   };
 
   useEffect(() => {
@@ -672,6 +730,26 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
               </Button>
             </ButtonToolbar>
           </form>
+          <Modal
+            isOpen={creditsWarning}
+            toggle={toggle}
+            // modalClassName={`${rtl.direction}-support`}
+            // className={`modal-dialog--${color} ${modalClass}`}
+          >
+            <div className="modal__header">
+              <button
+                className="lnr lnr-cross modal__close-btn"
+                aria-label="modal__close-btn"
+                type="button"
+                onClick={toggle}
+              />
+              <h4 className="text-modal  modal__title">Warning</h4>
+              <h5 className="text-modal  modal__title">You do not have enough credits for making requests</h5>
+            </div>
+            <ButtonToolbar className="modal__footer">
+              <Button color="primary" className="modal_cancel" onClick={toggle}>OK</Button>
+            </ButtonToolbar>
+          </Modal>
         </CardBody>
       </Card>
     </Col>

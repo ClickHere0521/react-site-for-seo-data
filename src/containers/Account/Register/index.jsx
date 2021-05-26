@@ -19,7 +19,13 @@ const Register = ({ history }) => {
           password: user.password,
           username: user.username,
           visits: 0,
+          fetchedData: 0,
+          totalFunds: 0,
         });        
+        const firestore = firebase.firestore();
+        firestore.collection('Activity').doc(userCredential.user.uid).set({
+          Activities: [],
+        });
         history.push('/log_in');
       })
       .catch((err) => {

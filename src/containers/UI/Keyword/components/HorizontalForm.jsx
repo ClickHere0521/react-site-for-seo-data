@@ -10,13 +10,15 @@ import renderSelectField from '@/shared/components/form/Select';
 import { useSelector, useDispatch } from 'react-redux';
 import { apiOptionActions, apiResultActions } from '@/redux/actions/apiActions';
 import firebase from 'firebase';
-import { updateRemainCreditsActions } from '@/redux/actions/userInfoActions';
+import { updateRemainCreditsActions, updatefetchedDataActions, updateActivityActions } from '@/redux/actions/userInfoActions';
 import keywordApi from '../../../../utils/api/keywordApi';
 
 const HorizontalForm = ({ handleSubmit, reset }) => {
   const apiOptionDispatch = useDispatch();
   const apiResultDispatch = useDispatch();
   const creditsUpdateDispatch = useDispatch();
+  const fetchedDataUpdateDispatch = useDispatch();
+  const activityUpdateDispatch = useDispatch();
 
   const introduction = [
     {
@@ -88,19 +90,60 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
     // console.log('dataapiprops', dataApiProps);
     keywordApi(dataApiProps, handleResult);
     // ---------- Minus Credits ------------- //
+    const today = new Date();
+    let currentCredits; 
+    let currentActivity;
+    const replaceActivity = [];
+    let isNew = false;
+    let fetchedData;
+    const todayDate = `${today.getFullYear() }-${ today.getMonth() + 1 }-${ today.getDate()}`;
     const currentUid = await firebase.auth().currentUser.uid;
     const db = firebase.database().ref(`/users/${currentUid}`);
-    let currentCredits;
-    await db.once('value')
-    .then((snapshot) => {          
-      currentCredits = snapshot.val().credits;
-    });
-    db.update({
-      credits: (currentCredits - 1),
-    })
-    .then(() => {
-      creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 1)));
-    });
+    firebase.firestore().collection('Activity').doc(currentUid).get()
+      .then((querySnapShot) => {
+          currentActivity = querySnapShot.data().Activities;
+          currentActivity.forEach((val) => {
+            if (val.date === todayDate) {
+              replaceActivity.push({
+                date: todayDate,
+                fetchedData: (val.fetchedData + 1),
+              }); 
+              isNew = false;
+            } else {
+              replaceActivity.push({
+                date: val.date,
+                fetchedData: val.fetchedData,
+              });
+              isNew = true;
+            }
+          });
+          if (isNew) {
+            replaceActivity.push({
+              date: todayDate,
+              fetchedData: 1,
+            });
+          }
+          firebase.firestore().collection('Activity').doc(currentUid).update({
+            Activities: replaceActivity,
+          });
+          activityUpdateDispatch(updateActivityActions(replaceActivity));
+      });
+    
+    await db
+      .once('value')
+      .then((snapshot) => {          
+        currentCredits = snapshot.val().credits;
+        fetchedData = snapshot.val().fetchedData;
+      });
+    db
+      .update({
+        credits: (currentCredits - 1),
+        fetchedData: (fetchedData + 1),
+      })
+      .then(() => {
+        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 1)));
+        fetchedDataUpdateDispatch(updatefetchedDataActions((fetchedData + 1)));
+      });
   };
 
   useEffect(() => {
