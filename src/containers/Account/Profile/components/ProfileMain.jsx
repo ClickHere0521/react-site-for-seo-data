@@ -21,7 +21,7 @@ const ProfileMain = () => {
             </div>
             <div className="profile__data">
               <p className="profile__name">{username}</p>
-              <p className="profile__work">Data Scientist</p>
+              <p className="profile__work">{' '}</p>
               <p className="profile__contact">{email}</p>
               <p className="profile__contact">Remain Credits: {remaincredits}</p>
               {/* <p className="profile__contact" dir="ltr">{phone}</p> */}

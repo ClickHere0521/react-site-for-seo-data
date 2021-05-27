@@ -5,7 +5,7 @@ import {
   UncontrolledTooltip, Modal,
 } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import AlertCircleIcon from 'mdi-react/AlertCircleIcon';
+import AlertCircleOutlineIcon from 'mdi-react/AlertCircleOutlineIcon';
 import renderSelectField from '@/shared/components/form/Select';
 import { useSelector, useDispatch } from 'react-redux';
 import { apiOptionActions, apiResultActions } from '@/redux/actions/apiActions';
@@ -108,7 +108,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
       currentCredits = snapshot.val().credits;
       fetchedData = snapshot.val().fetchedData;
     });
-    if (currentCredits < 10) {
+    if (currentCredits < 734) {
       setCreditsWarning(true);
       return null;
     }
@@ -152,11 +152,11 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
 
     db
       .update({
-        credits: (currentCredits - 1),
+        credits: (currentCredits - 733),
         fetchedData: (fetchedData + 1),
       })
       .then(() => {
-        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 1)));
+        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 733)));
         fetchedDataUpdateDispatch(updatefetchedDataActions((fetchedData + 1)));
       });
     return null;
@@ -638,7 +638,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
               </div>
             </div>
             <div className="form__form-group">
-              <span className="form__form-group-label">Include serp info:</span>
+              <span className="form__form-group-label">Include serp info:<AlertCircleOutlineIcon size="18" id="isiTooltip" /></span>
               <div className="form__form-group-field">
                 <Field
                   name="includeSerp"
@@ -651,10 +651,14 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
                     { value: false, label: 'No' },
                   ]}
                 />
+                <UncontrolledTooltip placement="bottom" target="isiTooltip">
+                  include data from SERP for each keyword (optional field) if set to true, we will return a serp_info array containing SERP data (number of search results, 
+                  relevant URL, and SERP features) for every keyword in the response default value: false
+                </UncontrolledTooltip>
               </div>
             </div>
             <div className="form__form-group">
-              <span className="form__form-group-label">Keyword:<AlertCircleIcon size="18" id="keywordTooltip" /></span>
+              <span className="form__form-group-label">Keyword:<AlertCircleOutlineIcon size="18" id="keywordTooltip" /></span>
               <div className="form__form-group-field">
                 <Field
                   name="keyword"

@@ -5,7 +5,7 @@ import {
   UncontrolledTooltip, Modal,
 } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import AlertCircleIcon from 'mdi-react/AlertCircleIcon';
+import AlertCircleOutlineIcon from 'mdi-react/AlertCircleOutlineIcon';
 import renderSelectField from '@/shared/components/form/Select';
 import { useSelector, useDispatch } from 'react-redux';
 import { apiOptionActions, apiResultActions } from '@/redux/actions/apiActions';
@@ -101,7 +101,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
       currentCredits = snapshot.val().credits;
       fetchedData = snapshot.val().fetchedData;
     });
-    if (currentCredits < 10) {
+    if (currentCredits < 501) {
       setCreditsWarning(true);
       return null;
     }
@@ -145,11 +145,11 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
 
     db
       .update({
-        credits: (currentCredits - 1),
+        credits: (currentCredits - 500),
         fetchedData: (fetchedData + 1),
       })
       .then(() => {
-        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 1)));
+        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 500)));
         fetchedDataUpdateDispatch(updatefetchedDataActions((fetchedData + 1)));
       });
     return null;
@@ -250,7 +250,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
 
           <form className="form form--horizontal" onSubmit={handleSubmit}>
             <div className="form__form-group">
-              <span className="form__form-group-label">SE:</span>
+              <span className="form__form-group-label">Search Engine:</span>
               <div className="form__form-group-field">
                 <Field
                   name="se"
@@ -645,7 +645,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
               </div>
             </div>
             <div className="form__form-group">
-              <span className="form__form-group-label">Tag:<AlertCircleIcon size="18" id="tagTooltip" /></span>
+              <span className="form__form-group-label">Tag:<AlertCircleOutlineIcon size="18" id="tagTooltip" /></span>
               <div className="form__form-group-field">
                 <Field
                   name="tag"

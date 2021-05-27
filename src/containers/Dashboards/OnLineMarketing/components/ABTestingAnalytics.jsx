@@ -37,7 +37,7 @@ const ABTestingAnalytics = ({ dir, themeName }) => {
   return (
     <Panel md={12} lg={12} xl={12} title={t('api_dashboard.services_usage')}>
       <div dir="ltr">
-        <ResponsiveContainer height={450} className="dashboard__area">
+        <ResponsiveContainer height={300} className="dashboard__area">
           <AreaChart data={dailyData} margin={{ top: 20, left: -15, bottom: 20 }}>
             <XAxis dataKey="date" tickLine={false} reversed={dir === 'rtl'} />
             <YAxis tickLine={false} orientation={dir === 'rtl' ? 'right' : 'left'} />
