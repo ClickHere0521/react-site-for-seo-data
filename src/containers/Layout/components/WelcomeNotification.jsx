@@ -10,7 +10,7 @@ Notification.newInstance({ style: { top: 65 } }, n => welcomeNotification = n);
 
 const WelcomeNotification = (theme, rtl, setIsNotificationShown, isNotificationShown) => {
   const title = 'Welcome to the SemSearches!';
-  const message = 'You have successfully registered in the SemSearches. Now you can start to explore the site'
+  const message = 'You have successfully logged in the SemSearches. Now you can start to explore the site'
     + 'interface with a bunch of APIs. Enjoy!';
   const initialProps = {
     content: <BasicNotification
