@@ -67,7 +67,6 @@ const App = () => {
       >
         <BrowserRouter basename="/">
           <I18nextProvider i18n={i18n}>
-            {/* <FirebaseDatabaseProvider> */}
             <LoadScript
               googleMapsApiKey=""
             >
@@ -77,7 +76,6 @@ const App = () => {
                 </ConnectedThemeComponent>
               </ScrollToTop>
             </LoadScript>
-            {/* </FirebaseDatabaseProvider> */}
           </I18nextProvider>
         </BrowserRouter>
       </Auth0Provider>

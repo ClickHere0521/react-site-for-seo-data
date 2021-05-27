@@ -101,7 +101,7 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
       currentCredits = snapshot.val().credits;
       fetchedData = snapshot.val().fetchedData;
     });
-    if (currentCredits < 8) {
+    if (currentCredits < 0.04) {
       setCreditsWarning(true);
       return null;
     }
@@ -145,11 +145,11 @@ const HorizontalForm = ({ handleSubmit, reset }) => {
 
     db
       .update({
-        credits: (currentCredits - 7),
+        credits: (currentCredits - 0.03),
         fetchedData: (fetchedData + 1),
       })
       .then(() => {
-        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 7)));
+        creditsUpdateDispatch(updateRemainCreditsActions((currentCredits - 0.03)));
         fetchedDataUpdateDispatch(updatefetchedDataActions((fetchedData + 1)));
       });
     return null;
