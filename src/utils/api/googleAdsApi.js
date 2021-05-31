@@ -8,10 +8,10 @@ export default async (dataApiProps, handleResult) => {
     try {
         await axios({
             method: 'post',
-            url: `https://sandbox.dataforseo.com/v3/keywords_data/${se}/keywords_for_site/task_post`,
+            url: `https://www.dataforseo.com/v3/keywords_data/${se}/keywords_for_site/task_post`,
             auth: {
-                username: 'effortsclickhere0901@gmail.com',
-                password: '9815613a0ce27ac5',
+                username: 'hello@webpify',
+                password: 'be557376303cc5e3',
             },
             data: [{
               location_code: location,  
@@ -28,10 +28,10 @@ export default async (dataApiProps, handleResult) => {
             try {
                 await axios({
                     method: 'get',
-                    url: `https://sandbox.dataforseo.com/v3/keywords_data/${se}/keywords_for_site/task_get/${result.id}`,
+                    url: `https://www.dataforseo.com/v3/keywords_data/${se}/keywords_for_site/task_get/${result.id}`,
                     auth: {
-                        username: 'effortsclickhere0901@gmail.com',
-                        password: '9815613a0ce27ac5',
+                        username: 'hello@webpify',
+                        password: 'be557376303cc5e3',
                     },
                     headers: {
                         'content-type': 'application/json',
