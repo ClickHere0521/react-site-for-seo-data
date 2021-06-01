@@ -97,7 +97,7 @@ const ModalComponent = ({
               })
               .then(() => {
                 creditsUpdateDispatch(updateRemainCreditsActions((currentCredits + totalCredits)));
-                fundsUpdateDispatch(updateFundsActions((totalFunds + totalAmount)));
+                fundsUpdateDispatch(updateFundsActions((totalFunds + totalAmount).toFixed(1)));
                 return fetch('/paypal-transaction-complete', {
                     method: 'post',
                     body: JSON.stringify({

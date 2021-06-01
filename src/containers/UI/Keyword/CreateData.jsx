@@ -16,15 +16,15 @@ const CreateTableData = () => {
       //   Header: 'Bing keyword info',
       //   accessor: 'bing_keyword_info',
       // },
-      {
-        Header: 'Bing keyword monthly searches',
-        accessor: 'bing_keyword_monthly_searches',
-      },
-      {
-        Header: 'Bing keyword update time',
-        accessor: 'bing_keyword_update_time',
-        disableGlobalFilter: true,
-      },
+      // {
+      //   Header: 'Bing keyword monthly searches',
+      //   accessor: 'bing_keyword_monthly_searches',
+      // },
+      // {
+      //   Header: 'Bing keyword update time',
+      //   accessor: 'bing_keyword_update_time',
+      //   disableGlobalFilter: true,
+      // },
       {
         Header: 'Ad position average',
         accessor: 'ad_position_average',
@@ -179,8 +179,8 @@ const CreateTableData = () => {
         data.push({
           id,
           // bing_keyword_info: value.keyword_data.bing_keyword_info.search_volume,
-          bing_keyword_monthly_searches: bingKeywordMonthlySearchesJson,
-          bing_keyword_update_time: value.keyword_data.bing_keyword_info.last_updated_time,
+          // bing_keyword_monthly_searches: bingKeywordMonthlySearchesJson,
+          // bing_keyword_update_time: value.keyword_data.bing_keyword_info.last_updated_time,
           ad_position_average: value.keyword_data.impressions_info.ad_position_average,
           ad_position_max: value.keyword_data.impressions_info.ad_position_max,
           ad_position_min: value.keyword_data.impressions_info.ad_position_min,
