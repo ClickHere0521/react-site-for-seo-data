@@ -8,10 +8,10 @@ export default async (dataApiProps, handleResult) => {
     try {
         await axios({
             method: 'post',
-            url: `https://www.dataforseo.com/v3/serp/${se}/${setype}/live/advanced`,
+            url: `https://api.dataforseo.com/v3/serp/${se}/${setype}/live/advanced`,
             auth: {
-                username: 'hello@webpify',
-                password: 'be557376303cc5e3',
+                username: 'effortsclickhere0901@gmail.com',
+                password: '9815613a0ce27ac5',
             },
             data: [{
               keyword,
@@ -22,7 +22,7 @@ export default async (dataApiProps, handleResult) => {
               search_param: sep,
             }],
             headers: {
-                'content-type': 'application/json',
+                'content-type': 'application/x-www-form-urlencoded',
             },
         }).then((response) => {
             const { result } = response.data.tasks[0];

@@ -8,11 +8,11 @@ export default async (dataApiProps, handleResult) => {
     try {
         await axios({
             method: 'post',
-            url: 'https://www.dataforseo.com/v3/dataforseo_labs/related_keywords/live',
+            url: 'https://api.dataforseo.com/v3/dataforseo_labs/related_keywords/live',
             auth: {
                 username: 'hello@webpify',
                 password: 'be557376303cc5e3',
-            },
+            },             
             data: [{
               keyword,
               location_code: location,  

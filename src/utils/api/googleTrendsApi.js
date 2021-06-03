@@ -8,7 +8,7 @@ export default async (dataApiProps, handleResult) => {
     try {
         await axios({
             method: 'post',
-            url: 'https://www.dataforseo.com/v3/keywords_data/google_trends/explore/task_post',
+            url: 'https://api.dataforseo.com/v3/keywords_data/google_trends/explore/task_post',
             auth: {
                 username: 'hello@webpify',
                 password: 'be557376303cc5e3',
