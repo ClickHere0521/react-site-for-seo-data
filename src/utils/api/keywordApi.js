@@ -8,9 +8,9 @@ export default async (dataApiProps, handleResult) => {
     try {
         await axios({
             method: 'post',
-            url: 'https://api.dataforseo.com/v3/dataforseo_labs/related_keywords/live',
+            url: 'https://sandbox.dataforseo.com/v3/dataforseo_labs/related_keywords/live',
             auth: {
-                username: 'hello@webpify',
+                username: 'hello@webpify.com',
                 password: 'be557376303cc5e3',
             },             
             data: [{
@@ -25,7 +25,7 @@ export default async (dataApiProps, handleResult) => {
         }).then((response) => {
             const { result } = response.data.tasks[0];
             console.log('fdsfds', result);
-            // handleResult(result[0]);
+            handleResult(result[0]);
             return result[0].items[0];
         }).catch((error) => {
             console.log(error);

@@ -10,8 +10,8 @@ export default async (dataApiProps, handleResult) => {
             method: 'post',
             url: `https://api.dataforseo.com/v3/serp/${se}/${setype}/live/advanced`,
             auth: {
-                username: 'effortsclickhere0901@gmail.com',
-                password: '9815613a0ce27ac5',
+                username: 'hello@webpify.com',
+                password: 'be557376303cc5e3',
             },
             data: [{
               keyword,
