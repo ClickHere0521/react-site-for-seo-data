@@ -8,7 +8,7 @@ export default async (dataApiProps, handleResult) => {
     try {
         await axios({
             method: 'post',
-            url: 'https://sandbox.dataforseo.com/v3/dataforseo_labs/related_keywords/live',
+            url: 'https://api.dataforseo.com/v3/dataforseo_labs/related_keywords/live',
             auth: {
                 username: 'hello@webpify.com',
                 password: 'be557376303cc5e3',
